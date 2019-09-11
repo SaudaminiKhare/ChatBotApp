@@ -1,0 +1,5 @@
+﻿INSERT INTO [dbo].[Questions] ([Question_ID], [Question]) VALUES (N'Q_001', N'Do you want Color Touchscreen?')
+INSERT INTO [dbo].[Questions] ([Question_ID], [Question]) VALUES (N'Q_002', N'Do you want ECG?')
+INSERT INTO [dbo].[Questions] ([Question_ID], [Question]) VALUES (N'Q_003', N'Do you want Ambient light adjustments?')
+INSERT INTO [dbo].[Questions] ([Question_ID], [Question]) VALUES (N'Q_004', N'Do you want NBP measurement display?')
+INSERT INTO [dbo].[Questions] ([Question_ID], [Question]) VALUES (N'Q_005', N'Do you want SpO2?')
