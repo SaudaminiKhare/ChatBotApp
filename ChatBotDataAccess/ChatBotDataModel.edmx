@@ -26,9 +26,11 @@ warning 6002: The table/view 'ChatBotDB.dbo.PatientMonitors' does not have a pri
           <Key>
             <PropertyRef Name="Model" />
             <PropertyRef Name="Feature_ID" />
+            <PropertyRef Name="Presence" />
           </Key>
           <Property Name="Model" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Feature_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Presence" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -44,7 +46,8 @@ warning 6002: The table/view 'ChatBotDB.dbo.PatientMonitors' does not have a pri
           <EntitySet Name="PatientMonitors" EntityType="Self.PatientMonitors" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [PatientMonitors].[Model] AS [Model], 
-    [PatientMonitors].[Feature_ID] AS [Feature_ID]
+    [PatientMonitors].[Feature_ID] AS [Feature_ID], 
+    [PatientMonitors].[Presence] AS [Presence]
     FROM [dbo].[PatientMonitors] AS [PatientMonitors]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -70,9 +73,11 @@ warning 6002: The table/view 'ChatBotDB.dbo.PatientMonitors' does not have a pri
           <Key>
             <PropertyRef Name="Model" />
             <PropertyRef Name="Feature_ID" />
+            <PropertyRef Name="Presence" />
           </Key>
           <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Feature_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Presence" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ChatBotDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Features" EntityType="Self.Feature" />
@@ -113,6 +118,7 @@ warning 6002: The table/view 'ChatBotDB.dbo.PatientMonitors' does not have a pri
           <EntitySetMapping Name="PatientMonitors">
             <EntityTypeMapping TypeName="ChatBotDBModel.PatientMonitor">
               <MappingFragment StoreEntitySet="PatientMonitors">
+                <ScalarProperty Name="Presence" ColumnName="Presence" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Feature_ID" ColumnName="Feature_ID" />
               </MappingFragment>

@@ -16,5 +16,6 @@ namespace ChatBotDataAccess
     {
         public string Model { get; set; }
         public string Feature_ID { get; set; }
+        public bool Presence { get; set; }
     }
 }
