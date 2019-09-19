@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7402C788-73B7-4F3D-A6EA-1622D139EEF6}</ProjectGuid>
+    <ProjectGuid>{41C063AD-078D-4388-A96D-4914948E26A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChatBotDataAccess</RootNamespace>
     <AssemblyName>ChatBotDataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -50,58 +50,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatBotDataModel.Context.cs">
+    <Compile Include="ChatBotModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChatBotDataModel.Context.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChatBotDataModel.cs">
+    <Compile Include="ChatBotModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChatBotDataModel.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChatBotDataModel.Designer.cs">
+    <Compile Include="ChatBotModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ChatBotDataModel.edmx</DependentUpon>
+      <DependentUpon>ChatBotModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Feature.cs">
-      <DependentUpon>ChatBotDataModel.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Monitor.cs">
-      <DependentUpon>ChatBotDataModel.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PatientMonitor.cs">
-      <DependentUpon>ChatBotDataModel.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs">
-      <DependentUpon>ChatBotDataModel.tt</DependentUpon>
+      <DependentUpon>ChatBotModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ChatBotDataModel.edmx">
+    <EntityDeploy Include="ChatBotModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ChatBotDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ChatBotModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ChatBotDataModel.edmx.diagram">
-      <DependentUpon>ChatBotDataModel.edmx</DependentUpon>
+    <None Include="ChatBotModel.edmx.diagram">
+      <DependentUpon>ChatBotModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ChatBotDataModel.Context.tt">
+    <Content Include="ChatBotModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ChatBotDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>ChatBotDataModel.edmx</DependentUpon>
+      <LastGenOutput>ChatBotModel.Context.cs</LastGenOutput>
+      <DependentUpon>ChatBotModel.edmx</DependentUpon>
     </Content>
-    <Content Include="ChatBotDataModel.tt">
+    <Content Include="ChatBotModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ChatBotDataModel.edmx</DependentUpon>
-      <LastGenOutput>ChatBotDataModel.cs</LastGenOutput>
+      <DependentUpon>ChatBotModel.edmx</DependentUpon>
+      <LastGenOutput>ChatBotModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

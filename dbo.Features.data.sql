@@ -1,5 +1,6 @@
-﻿INSERT INTO Features values ('F1','Color Touchscreen');
-INSERT INTO Features values ('F2','ECG');
-INSERT INTO Features values ('F3','Ambient light adjustments');
-INSERT INTO Features values ('F4','NBP measurement display');
-INSERT INTO Features values ('F5','SpO2');
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (1, N'F_001', N'Color Touchscreen')
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (2, N'F_002', N'ECG')
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (3, N'F_003', N'Ambient light adjustments')
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (4, N'F_004', N'NBP measurement display')
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (5, N'F_005', N'SpO2')
+INSERT INTO [dbo].[Features] ([Row_ID], [Feature_ID], [Feature_Name]) VALUES (6, N'F_006', N'Portable')

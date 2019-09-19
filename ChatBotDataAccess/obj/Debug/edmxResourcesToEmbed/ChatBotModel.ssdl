@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChatBotDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Features">
+    <Key>
+      <PropertyRef Name="Feature_ID" />
+    </Key>
+    <Property Name="Feature_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Feature_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Monitors">
+    <Key>
+      <PropertyRef Name="Model" />
+    </Key>
+    <Property Name="Model" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Sales_Incharge" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ChatBotDB.dbo.PatientMonitors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PatientMonitors">
+    <Key>
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="Features" />
+    </Key>
+    <Property Name="Model" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Features" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Question_ID" />
+    </Key>
+    <Property Name="Question_ID" Type="int" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Option" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__PatientMo__Model__5BE2A6F2">
+    <End Role="Monitors" Type="Self.Monitors" Multiplicity="1" />
+    <End Role="PatientMonitors" Type="Self.PatientMonitors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monitors">
+        <PropertyRef Name="Model" />
+      </Principal>
+      <Dependent Role="PatientMonitors">
+        <PropertyRef Name="Model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ChatBotDBModelStoreContainer">
+    <EntitySet Name="Features" EntityType="Self.Features" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Monitors" EntityType="Self.Monitors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientMonitors" EntityType="Self.PatientMonitors" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PatientMonitors].[Model] AS [Model], 
+    [PatientMonitors].[Features] AS [Features]
+    FROM [dbo].[PatientMonitors] AS [PatientMonitors]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__PatientMo__Model__5BE2A6F2" Association="Self.FK__PatientMo__Model__5BE2A6F2">
+      <End Role="Monitors" EntitySet="Monitors" />
+      <End Role="PatientMonitors" EntitySet="PatientMonitors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

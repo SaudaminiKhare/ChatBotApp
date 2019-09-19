@@ -1,0 +1,12 @@
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\SelectMonitorContractsLib.dll
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\SelectMonitorContractsLib.pdb
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\ChatBotDataAccess.dll
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\EntityFramework.dll
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\ChatBotDataAccess.pdb
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\ChatBotDataAccess.dll.config
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\bin\Debug\EntityFramework.xml
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\obj\Debug\SelectMonitorContractsLib.csprojAssemblyReference.cache
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\obj\Debug\SelectMonitorContractsLib.csproj.CoreCompileInputs.cache
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\obj\Debug\SelectMonitorContractsLib.csproj.CopyComplete
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\obj\Debug\SelectMonitorContractsLib.dll
+C:\Users\320069635\source\repos\ChatBotApp\SelectMonitorContractsLib\obj\Debug\SelectMonitorContractsLib.pdb

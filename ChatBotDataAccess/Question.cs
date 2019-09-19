@@ -14,7 +14,8 @@ namespace ChatBotDataAccess
     
     public partial class Question
     {
-        public string Question_ID { get; set; }
+        public int Question_ID { get; set; }
         public string Question1 { get; set; }
+        public string Option { get; set; }
     }
 }

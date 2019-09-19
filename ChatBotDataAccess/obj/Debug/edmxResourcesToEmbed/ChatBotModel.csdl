@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChatBotDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Feature">
+    <Key>
+      <PropertyRef Name="Feature_ID" />
+    </Key>
+    <Property Name="Feature_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Feature_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Monitor">
+    <Key>
+      <PropertyRef Name="Model" />
+    </Key>
+    <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Incharge" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PatientMonitors" Relationship="Self.FK__PatientMo__Model__5BE2A6F2" FromRole="Monitors" ToRole="PatientMonitors" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Question_ID" />
+    </Key>
+    <Property Name="Question_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Option" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PatientMonitor">
+    <Key>
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="Features" />
+    </Key>
+    <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Monitor" Relationship="Self.FK__PatientMo__Model__5BE2A6F2" FromRole="PatientMonitors" ToRole="Monitors" />
+  </EntityType>
+  <Association Name="FK__PatientMo__Model__5BE2A6F2">
+    <End Role="Monitors" Type="Self.Monitor" Multiplicity="1" />
+    <End Role="PatientMonitors" Type="Self.PatientMonitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monitors">
+        <PropertyRef Name="Model" />
+      </Principal>
+      <Dependent Role="PatientMonitors">
+        <PropertyRef Name="Model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ChatBotDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Features" EntityType="Self.Feature" />
+    <EntitySet Name="Monitors" EntityType="Self.Monitor" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="PatientMonitors" EntityType="Self.PatientMonitor" />
+    <AssociationSet Name="FK__PatientMo__Model__5BE2A6F2" Association="Self.FK__PatientMo__Model__5BE2A6F2">
+      <End Role="Monitors" EntitySet="Monitors" />
+      <End Role="PatientMonitors" EntitySet="PatientMonitors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

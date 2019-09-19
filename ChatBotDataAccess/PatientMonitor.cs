@@ -15,7 +15,8 @@ namespace ChatBotDataAccess
     public partial class PatientMonitor
     {
         public string Model { get; set; }
-        public string Feature_ID { get; set; }
-        public bool Presence { get; set; }
+        public string Features { get; set; }
+    
+        public virtual Monitor Monitor { get; set; }
     }
 }

@@ -1,9 +1,6 @@
 ﻿CREATE TABLE [dbo].[PatientMonitors] (
     [Model]      VARCHAR (10) NOT NULL,
-    [Feature_ID] VARCHAR (10) NOT NULL,
-    [Presence]   BIT          NOT NULL,
-	CONSTRAINT PK_Monitor PRIMARY KEY (Model,Feature_ID),
-	FOREIGN KEY (Feature_ID) REFERENCES Features(Feature_ID),
-	FOREIGN KEY (Model) REFERENCES Monitors(Model)
+    [Features] VARCHAR (MAX) NOT NULL,
+    FOREIGN KEY ([Model]) REFERENCES [dbo].[Monitors] ([Model]), 
+    CONSTRAINT [PK_PatientMonitors] PRIMARY KEY ([Model])
 );
-
