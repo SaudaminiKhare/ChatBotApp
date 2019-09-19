@@ -30,7 +30,7 @@ namespace SelectMonitorLib
         }
 
         //string[] Responses;
-        public List<int> FindRequiredProduct(string[] responses)
+        public List<string> FindRequiredProduct(string[] responses)
         {
             ChatBotDBEntities entities = new ChatBotDBEntities();
             List<PatientMonitor> entity = null;
@@ -125,7 +125,7 @@ namespace SelectMonitorLib
                 
 
             }
-            return scoreList;
+            return BestMatch;
             //return monitors;
         }
 

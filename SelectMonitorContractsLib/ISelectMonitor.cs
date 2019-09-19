@@ -10,7 +10,7 @@ namespace SelectMonitorContractsLib
     public interface ISelectMonitor
     {
         Question FindQuestion(int ID);
-        List<int> FindRequiredProduct(string[] responses);
+        List<string> FindRequiredProduct(string[] responses);
         string[] RetrieveQuestionWithOptions(Question question);
     }
 }
