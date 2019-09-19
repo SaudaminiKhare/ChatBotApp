@@ -11,8 +11,8 @@ namespace SelectMonitorLib
 {
     public class SelectMonitor : ISelectMonitor
     {
-        
-        public int FindScore(string FeatureList,List<string> DesiredFeatures)
+
+        public int FindScore(string FeatureList, List<string> DesiredFeatures)
         {
             ChatBotDBEntities entities = new ChatBotDBEntities();
             int no_features = entities.Features.Count();
@@ -25,7 +25,7 @@ namespace SelectMonitorLib
                 FeatureList1.Add(arrItem);
 
             _score = (FeatureList1.Intersect(DesiredFeatures)).Count();
-            
+
             return _score;
         }
 
@@ -43,7 +43,7 @@ namespace SelectMonitorLib
             List<string> FeatureList1 = new List<string>();
             int _score = 0;
 
-            SqlConnection conn = new SqlConnection(@"Data Source=INGBTCPIC5NBZ24\SQLEXPRESS;Initial Catalog=ChatBotDB;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection conn = new SqlConnection(@"Data Source=INGBTCPIC5NBYY5\SQLEXPRESS;Initial Catalog=ChatBotDB;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
             conn.Open();
             if (responses.Length >= 3)
             {
@@ -60,22 +60,23 @@ namespace SelectMonitorLib
                 for (int i = 1; i <= Responses.Count; i++)
                 {
                     rowID = i;
-                    if (string.Compare(ResponseArray[i - 1], "Yes") == 0)
+                    //if (string.Compare(ResponseArray[i - 1], "Yes") == 0)
+                    if (ResponseArray[i-1].Equals("Yes",StringComparison.OrdinalIgnoreCase))
                     {
                         string queryString1 = "SELECT Feature_ID FROM dbo.Features where Row_ID = @rowID";
-                        
+
                         SqlCommand command1 = new SqlCommand(queryString1, conn);
                         command1.Parameters.AddWithValue("@rowID", rowID);
                         SqlDataReader reader1 = command1.ExecuteReader();
-                        while(reader1.Read())
+                        while (reader1.Read())
                         {
                             string Feature = reader1["Feature_ID"].ToString();
-                        DesiredFeatureList.Add(Feature);
+                            DesiredFeatureList.Add(Feature);
                         }
-                        
+
 
                     }
-                    
+
                 }
 
                 List<Boolean> AvailableFeatures = new List<Boolean>();
@@ -90,9 +91,9 @@ namespace SelectMonitorLib
                 int score = 0;
                 int _maxScore = 0;
 
-                                
+
                 while (reader.Read())
-                {                   
+                {
                     ModelNumber = reader["Model"].ToString();
                     Features = reader["Features"].ToString();
                     //rows.Add(column);
@@ -105,13 +106,13 @@ namespace SelectMonitorLib
 
                     score = FindScore(Features, DesiredFeatureList);
                     scoreList.Add(score);
-                    if (score>_maxScore)
+                    if (score > _maxScore)
                     {
                         _maxScore = score;
                         BestMatch.Clear();
                         BestMatch.Add(ModelNumber);
                     }
-                    else if(score==_maxScore)
+                    else if (score == _maxScore)
                     {
                         BestMatch.Add(ModelNumber);
                     }
@@ -122,11 +123,14 @@ namespace SelectMonitorLib
                 }
                 conn.Close();
                 #endregion
-                
+
 
             }
+            //return DesiredFeatureList;
+            //return FeatureList1;
             return BestMatch;
             //return monitors;
+            //return scoreList;
         }
 
         public Question FindQuestion(int ID)
@@ -154,3 +158,4 @@ namespace SelectMonitorLib
         }
     }
 }
+
