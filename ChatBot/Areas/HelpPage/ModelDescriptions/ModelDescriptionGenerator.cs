@@ -283,7 +283,7 @@ namespace ChatBot.Areas.HelpPage.ModelDescriptions
                 }
             }
 
-            // Rearrange the annotations
+            // ReInitialize the annotations
             annotations.Sort((x, y) =>
             {
                 // Special-case RequiredAttribute so that it shows up on top

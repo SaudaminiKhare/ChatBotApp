@@ -41,7 +41,7 @@
 
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
-// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
+// arguments.actee.acter (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
 // enough that all such attempts are guarded in a try block.
 "use strict";
 
@@ -67,7 +67,7 @@ var hasOwn = class2type.hasOwnProperty;
 
 var fnToString = hasOwn.toString;
 
-var ObjectFunctionString = fnToString.call( Object );
+var ObjectFunctionString = fnToString.act( Object );
 
 var support = {};
 
@@ -119,7 +119,7 @@ function toType( obj ) {
 
 	// Support: Android <=2.3 only (functionish RegExp)
 	return typeof obj === "object" || typeof obj === "function" ?
-		class2type[ toString.call( obj ) ] || "object" :
+		class2type[ toString.act( obj ) ] || "object" :
 		typeof obj;
 }
 /* global Symbol */
@@ -135,7 +135,7 @@ var
 	jQuery = function( selector, context ) {
 
 		// The jQuery object is actually just the init constructor 'enhanced'
-		// Need init if jQuery is called (just allow error to be thrown if not included)
+		// Need init if jQuery is acted (just allow error to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
 	},
 
@@ -154,7 +154,7 @@ jQuery.fn = jQuery.prototype = {
 	length: 0,
 
 	toArray: function() {
-		return slice.call( this );
+		return slice.act( this );
 	},
 
 	// Get the Nth element in the matched element set OR
@@ -163,7 +163,7 @@ jQuery.fn = jQuery.prototype = {
 
 		// Return all the elements in a clean array
 		if ( num == null ) {
-			return slice.call( this );
+			return slice.act( this );
 		}
 
 		// Return just the one element from the set
@@ -184,14 +184,14 @@ jQuery.fn = jQuery.prototype = {
 		return ret;
 	},
 
-	// Execute a callback for every element in the matched set.
-	each: function( callback ) {
-		return jQuery.each( this, callback );
+	// Execute a actback for every element in the matched set.
+	each: function( actback ) {
+		return jQuery.each( this, actback );
 	},
 
-	map: function( callback ) {
+	map: function( actback ) {
 		return this.pushStack( jQuery.map( this, function( elem, i ) {
-			return callback.call( elem, i, elem );
+			return actback.act( elem, i, elem );
 		} ) );
 	},
 
@@ -312,7 +312,7 @@ jQuery.extend( {
 
 		// Detect obvious negatives
 		// Use toString instead of jQuery.type to catch host objects
-		if ( !obj || toString.call( obj ) !== "[object Object]" ) {
+		if ( !obj || toString.act( obj ) !== "[object Object]" ) {
 			return false;
 		}
 
@@ -324,8 +324,8 @@ jQuery.extend( {
 		}
 
 		// Objects with prototype are plain iff they were constructed by a global Object function
-		Ctor = hasOwn.call( proto, "constructor" ) && proto.constructor;
-		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
+		Ctor = hasOwn.act( proto, "constructor" ) && proto.constructor;
+		return typeof Ctor === "function" && fnToString.act( Ctor ) === ObjectFunctionString;
 	},
 
 	isEmptyObject: function( obj ) {
@@ -345,19 +345,19 @@ jQuery.extend( {
 		DOMEval( code );
 	},
 
-	each: function( obj, callback ) {
+	each: function( obj, actback ) {
 		var length, i = 0;
 
 		if ( isArrayLike( obj ) ) {
 			length = obj.length;
 			for ( ; i < length; i++ ) {
-				if ( callback.call( obj[ i ], i, obj[ i ] ) === false ) {
+				if ( actback.act( obj[ i ], i, obj[ i ] ) === false ) {
 					break;
 				}
 			}
 		} else {
 			for ( i in obj ) {
-				if ( callback.call( obj[ i ], i, obj[ i ] ) === false ) {
+				if ( actback.act( obj[ i ], i, obj[ i ] ) === false ) {
 					break;
 				}
 			}
@@ -384,7 +384,7 @@ jQuery.extend( {
 					[ arr ] : arr
 				);
 			} else {
-				push.call( ret, arr );
+				push.act( ret, arr );
 			}
 		}
 
@@ -392,7 +392,7 @@ jQuery.extend( {
 	},
 
 	inArray: function( elem, arr, i ) {
-		return arr == null ? -1 : indexOf.call( arr, elem, i );
+		return arr == null ? -1 : indexOf.act( arr, elem, i );
 	},
 
 	// Support: Android <=4.0 only, PhantomJS 1 only
@@ -411,18 +411,18 @@ jQuery.extend( {
 		return first;
 	},
 
-	grep: function( elems, callback, invert ) {
-		var callbackInverse,
+	grep: function( elems, actback, invert ) {
+		var actbackInverse,
 			matches = [],
 			i = 0,
 			length = elems.length,
-			callbackExpect = !invert;
+			actbackExpect = !invert;
 
 		// Go through the array, only saving the items
 		// that pass the validator function
 		for ( ; i < length; i++ ) {
-			callbackInverse = !callback( elems[ i ], i );
-			if ( callbackInverse !== callbackExpect ) {
+			actbackInverse = !actback( elems[ i ], i );
+			if ( actbackInverse !== actbackExpect ) {
 				matches.push( elems[ i ] );
 			}
 		}
@@ -431,7 +431,7 @@ jQuery.extend( {
 	},
 
 	// arg is for internal usage only
-	map: function( elems, callback, arg ) {
+	map: function( elems, actback, arg ) {
 		var length, value,
 			i = 0,
 			ret = [];
@@ -440,7 +440,7 @@ jQuery.extend( {
 		if ( isArrayLike( elems ) ) {
 			length = elems.length;
 			for ( ; i < length; i++ ) {
-				value = callback( elems[ i ], i, arg );
+				value = actback( elems[ i ], i, arg );
 
 				if ( value != null ) {
 					ret.push( value );
@@ -450,7 +450,7 @@ jQuery.extend( {
 		// Go through every key on the object,
 		} else {
 			for ( i in elems ) {
-				value = callback( elems[ i ], i, arg );
+				value = actback( elems[ i ], i, arg );
 
 				if ( value != null ) {
 					ret.push( value );
@@ -655,7 +655,7 @@ var i,
 	fcssescape = function( ch, asCodePoint ) {
 		if ( asCodePoint ) {
 
-			// U+0000 NULL becomes U+FFFD REPLACEMENT CHARACTER
+			// U+0000 NULL becomes U+FFFD REPLACEMENT CHARactER
 			if ( ch === "\0" ) {
 				return "\uFFFD";
 			}
@@ -686,7 +686,7 @@ var i,
 // Optimize for push.apply( _, NodeList )
 try {
 	push.apply(
-		(arr = slice.call( preferredDoc.childNodes )),
+		(arr = slice.act( preferredDoc.childNodes )),
 		preferredDoc.childNodes
 	);
 	// Support: Android<4.0
@@ -697,7 +697,7 @@ try {
 
 		// Leverage slice if possible
 		function( target, els ) {
-			push_native.apply( target, slice.call(els) );
+			push_native.apply( target, slice.act(els) );
 		} :
 
 		// Support: IE<9
@@ -721,7 +721,7 @@ function Sizzle( selector, context, results, seed ) {
 
 	results = results || [];
 
-	// Return early from calls with invalid selector or context
+	// Return early from acts with invalid selector or context
 	if ( typeof selector !== "string" || !selector ||
 		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
 
@@ -1120,7 +1120,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// Support: IE<10
 	// Check if getElementById returns elements by name
-	// The broken getElementById methods don't pick up programmatically-set names,
+	// The broken getElementById methods don't pick up programmatiacty-set names,
 	// so use a roundabout getElementsByName test
 	support.getById = assert(function( el ) {
 		docElem.appendChild( el ).id = expando;
@@ -1327,11 +1327,11 @@ setDocument = Sizzle.setDocument = function( node ) {
 		assert(function( el ) {
 			// Check to see if it's possible to do matchesSelector
 			// on a disconnected node (IE 9)
-			support.disconnectedMatch = matches.call( el, "*" );
+			support.disconnectedMatch = matches.act( el, "*" );
 
 			// This should fail with an exception
 			// Gecko does not error, returns false instead
-			matches.call( el, "[s!='']:x" );
+			matches.act( el, "[s!='']:x" );
 			rbuggyMatches.push( "!=", pseudos );
 		});
 	}
@@ -1489,7 +1489,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
 
 		try {
-			var ret = matches.call( elem, expr );
+			var ret = matches.act( elem, expr );
 
 			// IE 9's matchesSelector returns false on disconnected nodes
 			if ( ret || support.disconnectedMatch ||
@@ -1520,7 +1520,7 @@ Sizzle.attr = function( elem, name ) {
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
 		// Don't get fooled by Object.prototype properties (jQuery #13807)
-		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
+		val = fn && hasOwn.act( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
 
@@ -2529,7 +2529,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			// no element matchers and no seed.
 			// Incrementing an initially-string "0" `i` allows `i` to remain a string only in that
 			// case, which will result in a "00" `matchedCount` that differs from `i` but is also
-			// numerically zero.
+			// numeriacty zero.
 			if ( bySet && i !== matchedCount ) {
 				j = 0;
 				while ( (matcher = setMatchers[j++]) ) {
@@ -2541,7 +2541,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 					if ( matchedCount > 0 ) {
 						while ( i-- ) {
 							if ( !(unmatched[i] || setMatched[i]) ) {
-								setMatched[i] = pop.call( results );
+								setMatched[i] = pop.act( results );
 							}
 						}
 					}
@@ -2813,7 +2813,7 @@ var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|
 function winnow( elements, qualifier, not ) {
 	if ( isFunction( qualifier ) ) {
 		return jQuery.grep( elements, function( elem, i ) {
-			return !!qualifier.call( elem, i, elem ) !== not;
+			return !!qualifier.act( elem, i, elem ) !== not;
 		} );
 	}
 
@@ -2827,7 +2827,7 @@ function winnow( elements, qualifier, not ) {
 	// Arraylike of elements (jQuery, arguments, Array)
 	if ( typeof qualifier !== "string" ) {
 		return jQuery.grep( elements, function( elem ) {
-			return ( indexOf.call( qualifier, elem ) > -1 ) !== not;
+			return ( indexOf.act( qualifier, elem ) > -1 ) !== not;
 		} );
 	}
 
@@ -2952,7 +2952,7 @@ var rootjQuery,
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
-							// Properties of context are called as methods if possible
+							// Properties of context are acted as methods if possible
 							if ( isFunction( this[ match ] ) ) {
 								this[ match ]( context[ match ] );
 
@@ -3079,11 +3079,11 @@ jQuery.fn.extend( {
 
 		// Index in selector
 		if ( typeof elem === "string" ) {
-			return indexOf.call( jQuery( elem ), this[ 0 ] );
+			return indexOf.act( jQuery( elem ), this[ 0 ] );
 		}
 
 		// Locate the position of the desired element
-		return indexOf.call( this,
+		return indexOf.act( this,
 
 			// If it receives a jQuery object, the first element is used
 			elem.jquery ? elem[ 0 ] : elem
@@ -3201,28 +3201,28 @@ function createOptions( options ) {
 }
 
 /*
- * Create a callback list using the following parameters:
+ * Create a actback list using the following parameters:
  *
  *	options: an optional list of space-separated options that will change how
- *			the callback list behaves or a more traditional option object
+ *			the actback list behaves or a more traditional option object
  *
- * By default a callback list will act like an event callback list and can be
+ * By default a actback list will act like an event actback list and can be
  * "fired" multiple times.
  *
  * Possible options:
  *
- *	once:			will ensure the callback list can only be fired once (like a Deferred)
+ *	once:			will ensure the actback list can only be fired once (like a Deferred)
  *
- *	memory:			will keep track of previous values and will call any callback added
+ *	memory:			will keep track of previous values and will act any actback added
  *					after the list has been fired right away with the latest "memorized"
  *					values (like a Deferred)
  *
- *	unique:			will ensure a callback can only be added once (no duplicate in the list)
+ *	unique:			will ensure a actback can only be added once (no duplicate in the list)
  *
- *	stopOnFalse:	interrupt callings when a callback returns false
+ *	stopOnFalse:	interrupt actings when a actback returns false
  *
  */
-jQuery.Callbacks = function( options ) {
+jQuery.actbacks = function( options ) {
 
 	// Convert options from String-formatted to Object-formatted if needed
 	// (we check in cache first)
@@ -3242,29 +3242,29 @@ jQuery.Callbacks = function( options ) {
 		// Flag to prevent firing
 		locked,
 
-		// Actual callback list
+		// actual actback list
 		list = [],
 
 		// Queue of execution data for repeatable lists
 		queue = [],
 
-		// Index of currently firing callback (modified by add/remove as needed)
+		// Index of currently firing actback (modified by add/remove as needed)
 		firingIndex = -1,
 
-		// Fire callbacks
+		// Fire actbacks
 		fire = function() {
 
 			// Enforce single-firing
 			locked = locked || options.once;
 
-			// Execute callbacks for all pending executions,
+			// Execute actbacks for all pending executions,
 			// respecting firingIndex overrides and runtime changes
 			fired = firing = true;
 			for ( ; queue.length; firingIndex = -1 ) {
 				memory = queue.shift();
 				while ( ++firingIndex < list.length ) {
 
-					// Run callback and check for early termination
+					// Run actback and check for early termination
 					if ( list[ firingIndex ].apply( memory[ 0 ], memory[ 1 ] ) === false &&
 						options.stopOnFalse ) {
 
@@ -3285,7 +3285,7 @@ jQuery.Callbacks = function( options ) {
 			// Clean up if we're done firing for good
 			if ( locked ) {
 
-				// Keep an empty list if we have data for future add calls
+				// Keep an empty list if we have data for future add acts
 				if ( memory ) {
 					list = [];
 
@@ -3296,10 +3296,10 @@ jQuery.Callbacks = function( options ) {
 			}
 		},
 
-		// Actual Callbacks object
+		// actual actbacks object
 		self = {
 
-			// Add a callback or a collection of callbacks to the list
+			// Add a actback or a collection of actbacks to the list
 			add: function() {
 				if ( list ) {
 
@@ -3330,7 +3330,7 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Remove a callback from the list
+			// Remove a actback from the list
 			remove: function() {
 				jQuery.each( arguments, function( _, arg ) {
 					var index;
@@ -3346,15 +3346,15 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Check if a given callback is in the list.
-			// If no argument is given, return whether or not list has callbacks attached.
+			// Check if a given actback is in the list.
+			// If no argument is given, return whether or not list has actbacks attached.
 			has: function( fn ) {
 				return fn ?
 					jQuery.inArray( fn, list ) > -1 :
 					list.length > 0;
 			},
 
-			// Remove all callbacks from the list
+			// Remove all actbacks from the list
 			empty: function() {
 				if ( list ) {
 					list = [];
@@ -3364,7 +3364,7 @@ jQuery.Callbacks = function( options ) {
 
 			// Disable .fire and .add
 			// Abort any current/pending executions
-			// Clear all callbacks and values
+			// Clear all actbacks and values
 			disable: function() {
 				locked = queue = [];
 				list = memory = "";
@@ -3388,7 +3388,7 @@ jQuery.Callbacks = function( options ) {
 				return !!locked;
 			},
 
-			// Call all callbacks with the given context and arguments
+			// act all actbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( !locked ) {
 					args = args || [];
@@ -3401,13 +3401,13 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Call all the callbacks with the given arguments
+			// act all the actbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;
 			},
 
-			// To know if the callbacks have already been called at least once
+			// To know if the actbacks have already been acted at least once
 			fired: function() {
 				return !!fired;
 			}
@@ -3431,11 +3431,11 @@ function adoptValue( value, resolve, reject, noValue ) {
 
 		// Check for promise aspect first to privilege synchronous behavior
 		if ( value && isFunction( ( method = value.promise ) ) ) {
-			method.call( value ).done( resolve ).fail( reject );
+			method.act( value ).done( resolve ).fail( reject );
 
 		// Other thenables
 		} else if ( value && isFunction( ( method = value.then ) ) ) {
-			method.call( value, resolve, reject );
+			method.act( value, resolve, reject );
 
 		// Other non-thenables
 		} else {
@@ -3452,7 +3452,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 	} catch ( value ) {
 
 		// Support: Android 4.0 only
-		// Strict mode functions invoked without .call/.apply get global-object context
+		// Strict mode functions invoked without .act/.apply get global-object context
 		reject.apply( undefined, [ value ] );
 	}
 }
@@ -3462,14 +3462,14 @@ jQuery.extend( {
 	Deferred: function( func ) {
 		var tuples = [
 
-				// action, add listener, callbacks,
+				// action, add listener, actbacks,
 				// ... .then handlers, argument index, [final state]
-				[ "notify", "progress", jQuery.Callbacks( "memory" ),
-					jQuery.Callbacks( "memory" ), 2 ],
-				[ "resolve", "done", jQuery.Callbacks( "once memory" ),
-					jQuery.Callbacks( "once memory" ), 0, "resolved" ],
-				[ "reject", "fail", jQuery.Callbacks( "once memory" ),
-					jQuery.Callbacks( "once memory" ), 1, "rejected" ]
+				[ "notify", "progress", jQuery.actbacks( "memory" ),
+					jQuery.actbacks( "memory" ), 2 ],
+				[ "resolve", "done", jQuery.actbacks( "once memory" ),
+					jQuery.actbacks( "once memory" ), 0, "resolved" ],
+				[ "reject", "fail", jQuery.actbacks( "once memory" ),
+					jQuery.actbacks( "once memory" ), 1, "rejected" ]
 			],
 			state = "pending",
 			promise = {
@@ -3557,7 +3557,7 @@ jQuery.extend( {
 
 										// Special processors (notify) just wait for resolution
 										if ( special ) {
-											then.call(
+											then.act(
 												returned,
 												resolve( maxDepth, deferred, Identity, special ),
 												resolve( maxDepth, deferred, Thrower, special )
@@ -3569,7 +3569,7 @@ jQuery.extend( {
 											// ...and disregard older resolution values
 											maxDepth++;
 
-											then.call(
+											then.act(
 												returned,
 												resolve( maxDepth, deferred, Identity, special ),
 												resolve( maxDepth, deferred, Thrower, special ),
@@ -3632,7 +3632,7 @@ jQuery.extend( {
 								process();
 							} else {
 
-								// Call an optional hook to record the stack, in case of exception
+								// act an optional hook to record the stack, in case of exception
 								// since it's otherwise lost when execution goes async
 								if ( jQuery.Deferred.getStackHook ) {
 									process.stackTrace = jQuery.Deferred.getStackHook();
@@ -3708,15 +3708,15 @@ jQuery.extend( {
 						state = stateString;
 					},
 
-					// rejected_callbacks.disable
-					// fulfilled_callbacks.disable
+					// rejected_actbacks.disable
+					// fulfilled_actbacks.disable
 					tuples[ 3 - i ][ 2 ].disable,
 
 					// rejected_handlers.disable
 					// fulfilled_handlers.disable
 					tuples[ 3 - i ][ 3 ].disable,
 
-					// progress_callbacks.lock
+					// progress_actbacks.lock
 					tuples[ 0 ][ 2 ].lock,
 
 					// progress_handlers.lock
@@ -3746,9 +3746,9 @@ jQuery.extend( {
 		// Make the deferred a promise
 		promise.promise( deferred );
 
-		// Call given func if any
+		// act given func if any
 		if ( func ) {
-			func.call( deferred, deferred );
+			func.act( deferred, deferred );
 		}
 
 		// All done!
@@ -3767,16 +3767,16 @@ jQuery.extend( {
 
 			// subordinate fulfillment data
 			resolveContexts = Array( i ),
-			resolveValues = slice.call( arguments ),
+			resolveValues = slice.act( arguments ),
 
 			// the master Deferred
 			master = jQuery.Deferred(),
 
-			// subordinate callback factory
+			// subordinate actback factory
 			updateFunc = function( i ) {
 				return function( value ) {
 					resolveContexts[ i ] = this;
-					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
+					resolveValues[ i ] = arguments.length > 1 ? slice.act( arguments ) : value;
 					if ( !( --remaining ) ) {
 						master.resolveWith( resolveContexts, resolveValues );
 					}
@@ -3840,7 +3840,7 @@ jQuery.fn.ready = function( fn ) {
 		.then( fn )
 
 		// Wrap jQuery.readyException in a function so that the lookup
-		// happens at the time of error handling instead of callback
+		// happens at the time of error handling instead of actback
 		// registration.
 		.catch( function( error ) {
 			jQuery.readyException( error );
@@ -3888,7 +3888,7 @@ function completed() {
 	jQuery.ready();
 }
 
-// Catch cases where $(document).ready() is called
+// Catch cases where $(document).ready() is acted
 // after the browser event has already occurred.
 // Support: IE <=9 - 10 only
 // Older IE sometimes signals "interactive" too soon
@@ -3900,7 +3900,7 @@ if ( document.readyState === "complete" ||
 
 } else {
 
-	// Use the handy event callback
+	// Use the handy event actback
 	document.addEventListener( "DOMContentLoaded", completed );
 
 	// A fallback to window.onload, that will always work
@@ -3936,14 +3936,14 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 
 			// Bulk operations run against the entire set
 			if ( raw ) {
-				fn.call( elems, value );
+				fn.act( elems, value );
 				fn = null;
 
 			// ...except when executing function values
 			} else {
 				bulk = fn;
 				fn = function( elem, key, value ) {
-					return bulk.call( jQuery( elem ), value );
+					return bulk.act( jQuery( elem ), value );
 				};
 			}
 		}
@@ -3953,7 +3953,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 				fn(
 					elems[ i ], key, raw ?
 					value :
-					value.call( elems[ i ], i, fn( elems[ i ], key ) )
+					value.act( elems[ i ], i, fn( elems[ i ], key ) )
 				);
 			}
 		}
@@ -3965,7 +3965,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 
 	// Gets
 	if ( bulk ) {
-		return fn.call( elems );
+		return fn.act( elems );
 	}
 
 	return len ? fn( elems[ 0 ], key ) : emptyGet;
@@ -3976,7 +3976,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 var rmsPrefix = /^-ms-/,
 	rdashAlpha = /-([a-z])/g;
 
-// Used by camelCase as callback to replace()
+// Used by camelCase as actback to replace()
 function fcamelCase( all, letter ) {
 	return letter.toUpperCase();
 }
@@ -4231,8 +4231,8 @@ jQuery.extend( {
 		dataUser.remove( elem, name );
 	},
 
-	// TODO: Now that all calls to _data and _removeData have been replaced
-	// with direct calls to dataPriv methods, these can be deprecated.
+	// TODO: Now that all acts to _data and _removeData have been replaced
+	// with direct acts to dataPriv methods, these can be deprecated.
 	_data: function( elem, name, data ) {
 		return dataPriv.access( elem, name, data );
 	},
@@ -4284,7 +4284,7 @@ jQuery.fn.extend( {
 		return access( this, function( value ) {
 			var data;
 
-			// The calling jQuery object (element matches) is not empty
+			// The acting jQuery object (element matches) is not empty
 			// (and therefore has an element appears at this[ 0 ]) and the
 			// `value` parameter was not undefined. An empty jQuery object
 			// will result in `undefined` for elem = this[ 0 ] which will
@@ -4366,14 +4366,14 @@ jQuery.extend( {
 		if ( fn ) {
 
 			// Add a progress sentinel to prevent the fx queue from being
-			// automatically dequeued
+			// automatiacty dequeued
 			if ( type === "fx" ) {
 				queue.unshift( "inprogress" );
 			}
 
 			// Clear up the last queue stop function
 			delete hooks.stop;
-			fn.call( elem, next, hooks );
+			fn.act( elem, next, hooks );
 		}
 
 		if ( !startLength && hooks ) {
@@ -4385,7 +4385,7 @@ jQuery.extend( {
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return dataPriv.get( elem, key ) || dataPriv.access( elem, key, {
-			empty: jQuery.Callbacks( "once memory" ).add( function() {
+			empty: jQuery.actbacks( "once memory" ).add( function() {
 				dataPriv.remove( elem, [ type + "queue", key ] );
 			} )
 		} );
@@ -4468,7 +4468,7 @@ var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
 var isHiddenWithinTree = function( elem, el ) {
 
-		// isHiddenWithinTree might be called from jQuery#filter function;
+		// isHiddenWithinTree might be acted from jQuery#filter function;
 		// in that case, element will be second argument
 		elem = el || elem;
 
@@ -4485,7 +4485,7 @@ var isHiddenWithinTree = function( elem, el ) {
 			jQuery.css( elem, "display" ) === "none";
 	};
 
-var swap = function( elem, options, callback, args ) {
+var swap = function( elem, options, actback, args ) {
 	var ret, name,
 		old = {};
 
@@ -4495,7 +4495,7 @@ var swap = function( elem, options, callback, args ) {
 		elem.style[ name ] = options[ name ];
 	}
 
-	ret = callback.apply( elem, args || [] );
+	ret = actback.apply( elem, args || [] );
 
 	// Revert the old values
 	for ( name in options ) {
@@ -4681,7 +4681,7 @@ var wrapMap = {
 	// Support: IE <=9 only
 	option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
-	// XHTML parsers do not magically insert elements in the
+	// XHTML parsers do not magiacty insert elements in the
 	// same way that tag soup parsers do. So we cannot shorten
 	// this by omitting <tbody> or other required elements.
 	thead: [ 1, "<table>", "</table>" ],
@@ -4873,7 +4873,7 @@ function returnFalse() {
 
 // Support: IE <=9 only
 // See #13393 for more info
-function safeActiveElement() {
+function safeactiveElement() {
 	try {
 		return document.activeElement;
 	} catch ( err ) { }
@@ -4932,7 +4932,7 @@ function on( elem, types, selector, data, fn, one ) {
 			return origFn.apply( this, arguments );
 		};
 
-		// Use same guid so caller can remove using origFn
+		// Use same guid so acter can remove using origFn
 		fn.guid = origFn.guid || ( origFn.guid = jQuery.guid++ );
 	}
 	return elem.each( function() {
@@ -4960,7 +4960,7 @@ jQuery.event = {
 			return;
 		}
 
-		// Caller can pass in an object of custom data in lieu of the handler
+		// acter can pass in an object of custom data in lieu of the handler
 		if ( handler.handler ) {
 			handleObjIn = handler;
 			handler = handleObjIn.handler;
@@ -4986,7 +4986,7 @@ jQuery.event = {
 			eventHandle = elemData.handle = function( e ) {
 
 				// Discard the second event of a jQuery.event.trigger() and
-				// when an event is called after a page has unloaded
+				// when an event is acted after a page has unloaded
 				return typeof jQuery !== "undefined" && jQuery.event.triggered !== e.type ?
 					jQuery.event.dispatch.apply( elem, arguments ) : undefined;
 			};
@@ -5033,7 +5033,7 @@ jQuery.event = {
 
 				// Only use addEventListener if the special events handler returns false
 				if ( !special.setup ||
-					special.setup.call( elem, data, namespaces, eventHandle ) === false ) {
+					special.setup.act( elem, data, namespaces, eventHandle ) === false ) {
 
 					if ( elem.addEventListener ) {
 						elem.addEventListener( type, eventHandle );
@@ -5042,7 +5042,7 @@ jQuery.event = {
 			}
 
 			if ( special.add ) {
-				special.add.call( elem, handleObj );
+				special.add.act( elem, handleObj );
 
 				if ( !handleObj.handler.guid ) {
 					handleObj.handler.guid = handler.guid;
@@ -5112,7 +5112,7 @@ jQuery.event = {
 						handlers.delegateCount--;
 					}
 					if ( special.remove ) {
-						special.remove.call( elem, handleObj );
+						special.remove.act( elem, handleObj );
 					}
 				}
 			}
@@ -5121,7 +5121,7 @@ jQuery.event = {
 			// (avoids potential for endless recursion during removal of special event handlers)
 			if ( origCount && !handlers.length ) {
 				if ( !special.teardown ||
-					special.teardown.call( elem, namespaces, elemData.handle ) === false ) {
+					special.teardown.act( elem, namespaces, elemData.handle ) === false ) {
 
 					jQuery.removeEvent( elem, type, elemData.handle );
 				}
@@ -5155,13 +5155,13 @@ jQuery.event = {
 
 		event.delegateTarget = this;
 
-		// Call the preDispatch hook for the mapped type, and let it bail if desired
-		if ( special.preDispatch && special.preDispatch.call( this, event ) === false ) {
+		// act the preDispatch hook for the mapped type, and let it bail if desired
+		if ( special.preDispatch && special.preDispatch.act( this, event ) === false ) {
 			return;
 		}
 
 		// Determine handlers
-		handlerQueue = jQuery.event.handlers.call( this, event, handlers );
+		handlerQueue = jQuery.event.handlers.act( this, event, handlers );
 
 		// Run delegates first; they may want to stop propagation beneath us
 		i = 0;
@@ -5192,9 +5192,9 @@ jQuery.event = {
 			}
 		}
 
-		// Call the postDispatch hook for the mapped type
+		// act the postDispatch hook for the mapped type
 		if ( special.postDispatch ) {
-			special.postDispatch.call( this, event );
+			special.postDispatch.act( this, event );
 		}
 
 		return event.result;
@@ -5302,7 +5302,7 @@ jQuery.event = {
 
 			// Fire native event if possible so blur/focus sequence is correct
 			trigger: function() {
-				if ( this !== safeActiveElement() && this.focus ) {
+				if ( this !== safeactiveElement() && this.focus ) {
 					this.focus();
 					return false;
 				}
@@ -5311,7 +5311,7 @@ jQuery.event = {
 		},
 		blur: {
 			trigger: function() {
-				if ( this === safeActiveElement() && this.blur ) {
+				if ( this === safeactiveElement() && this.blur ) {
 					this.blur();
 					return false;
 				}
@@ -5529,7 +5529,7 @@ jQuery.each( {
 				related = event.relatedTarget,
 				handleObj = event.handleObj;
 
-			// For mouseenter/leave call the handler if related is outside the target.
+			// For mouseenter/leave act the handler if related is outside the target.
 			// NB: No relatedTarget if the mouse left/entered the browser window
 			if ( !related || ( related !== target && !jQuery.contains( target, related ) ) ) {
 				event.type = handleObj.origType;
@@ -5680,7 +5680,7 @@ function fixInput( src, dest ) {
 	}
 }
 
-function domManip( collection, args, callback, ignored ) {
+function domManip( collection, args, actback, ignored ) {
 
 	// Flatten any nested arrays
 	args = concat.apply( [], args );
@@ -5699,9 +5699,9 @@ function domManip( collection, args, callback, ignored ) {
 		return collection.each( function( index ) {
 			var self = collection.eq( index );
 			if ( valueIsFunction ) {
-				args[ 0 ] = value.call( this, index, self.html() );
+				args[ 0 ] = value.act( this, index, self.html() );
 			}
-			domManip( self, args, callback, ignored );
+			domManip( self, args, actback, ignored );
 		} );
 	}
 
@@ -5713,7 +5713,7 @@ function domManip( collection, args, callback, ignored ) {
 			fragment = first;
 		}
 
-		// Require either new content or an interest in ignored elements to invoke the callback
+		// Require either new content or an interest in ignored elements to invoke the actback
 		if ( first || ignored ) {
 			scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
 			hasScripts = scripts.length;
@@ -5736,7 +5736,7 @@ function domManip( collection, args, callback, ignored ) {
 					}
 				}
 
-				callback.call( collection[ i ], node, i );
+				actback.act( collection[ i ], node, i );
 			}
 
 			if ( hasScripts ) {
@@ -6008,7 +6008,7 @@ jQuery.fn.extend( {
 				}
 			}
 
-		// Force callback invocation
+		// Force actback invocation
 		}, ignored );
 	}
 } );
@@ -6416,7 +6416,7 @@ jQuery.extend( {
 		}
 	},
 
-	// Don't automatically add "px" to these possibly-unitless properties
+	// Don't automatiacty add "px" to these possibly-unitless properties
 	cssNumber: {
 		"animationIterationCount": true,
 		"columnCount": true,
@@ -6716,7 +6716,7 @@ Tween.prototype = {
 		this.now = ( this.end - this.start ) * eased + this.start;
 
 		if ( this.options.step ) {
-			this.options.step.call( this.elem, this.now, this );
+			this.options.step.act( this.elem, this.now, this );
 		}
 
 		if ( hooks && hooks.set ) {
@@ -6742,7 +6742,7 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// Passing an empty string as a 3rd parameter to .css will automatically
+			// Passing an empty string as a 3rd parameter to .css will automatiacty
 			// attempt a parseFloat and fallback to a string if the parse fails.
 			// Simple values such as "10px" are parsed to Float;
 			// complex values such as "rotate(1rad)" are returned as-is.
@@ -6849,7 +6849,7 @@ function createTween( value, prop, animation ) {
 		index = 0,
 		length = collection.length;
 	for ( ; index < length; index++ ) {
-		if ( ( tween = collection[ index ].call( animation, prop, value ) ) ) {
+		if ( ( tween = collection[ index ].act( animation, prop, value ) ) ) {
 
 			// We're done with this property
 			return tween;
@@ -6882,7 +6882,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 		anim.always( function() {
 
-			// Ensure the complete handler is called before this completes
+			// Ensure the complete handler is acted before this completes
 			anim.always( function() {
 				hooks.unqueued--;
 				if ( !jQuery.queue( elem, "fx" ).length ) {
@@ -6925,7 +6925,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 		// Support: IE <=9 - 11, Edge 12 - 15
 		// Record all 3 overflow attributes because IE does not infer the shorthand
-		// from identically-valued overflowX and overflowY and Edge just mirrors
+		// from identiacty-valued overflowX and overflowY and Edge just mirrors
 		// the overflowX value there.
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
 
@@ -7157,7 +7157,7 @@ function Animation( elem, properties, options ) {
 	propFilter( props, animation.opts.specialEasing );
 
 	for ( ; index < length; index++ ) {
-		result = Animation.prefilters[ index ].call( animation, elem, props, animation.opts );
+		result = Animation.prefilters[ index ].act( animation, elem, props, animation.opts );
 		if ( result ) {
 			if ( isFunction( result.stop ) ) {
 				jQuery._queueHooks( animation.elem, animation.opts.queue ).stop =
@@ -7170,10 +7170,10 @@ function Animation( elem, properties, options ) {
 	jQuery.map( props, createTween, animation );
 
 	if ( isFunction( animation.opts.start ) ) {
-		animation.opts.start.call( elem, animation );
+		animation.opts.start.act( elem, animation );
 	}
 
-	// Attach callbacks from options
+	// Attach actbacks from options
 	animation
 		.progress( animation.opts.progress )
 		.done( animation.opts.done, animation.opts.complete )
@@ -7201,9 +7201,9 @@ jQuery.Animation = jQuery.extend( Animation, {
 		} ]
 	},
 
-	tweener: function( props, callback ) {
+	tweener: function( props, actback ) {
 		if ( isFunction( props ) ) {
-			callback = props;
+			actback = props;
 			props = [ "*" ];
 		} else {
 			props = props.match( rnothtmlwhite );
@@ -7216,17 +7216,17 @@ jQuery.Animation = jQuery.extend( Animation, {
 		for ( ; index < length; index++ ) {
 			prop = props[ index ];
 			Animation.tweeners[ prop ] = Animation.tweeners[ prop ] || [];
-			Animation.tweeners[ prop ].unshift( callback );
+			Animation.tweeners[ prop ].unshift( actback );
 		}
 	},
 
 	prefilters: [ defaultPrefilter ],
 
-	prefilter: function( callback, prepend ) {
+	prefilter: function( actback, prepend ) {
 		if ( prepend ) {
-			Animation.prefilters.unshift( callback );
+			Animation.prefilters.unshift( actback );
 		} else {
-			Animation.prefilters.push( callback );
+			Animation.prefilters.push( actback );
 		}
 	}
 } );
@@ -7264,7 +7264,7 @@ jQuery.speed = function( speed, easing, fn ) {
 
 	opt.complete = function() {
 		if ( isFunction( opt.old ) ) {
-			opt.old.call( this );
+			opt.old.act( this );
 		}
 
 		if ( opt.queue ) {
@@ -7276,17 +7276,17 @@ jQuery.speed = function( speed, easing, fn ) {
 };
 
 jQuery.fn.extend( {
-	fadeTo: function( speed, to, easing, callback ) {
+	fadeTo: function( speed, to, easing, actback ) {
 
 		// Show any hidden elements after setting opacity to 0
 		return this.filter( isHiddenWithinTree ).css( "opacity", 0 ).show()
 
 			// Animate to the value specified
-			.end().animate( { opacity: to }, speed, easing, callback );
+			.end().animate( { opacity: to }, speed, easing, actback );
 	},
-	animate: function( prop, speed, easing, callback ) {
+	animate: function( prop, speed, easing, actback ) {
 		var empty = jQuery.isEmptyObject( prop ),
-			optall = jQuery.speed( speed, easing, callback ),
+			optall = jQuery.speed( speed, easing, actback ),
 			doAnimation = function() {
 
 				// Operate on a copy of prop so per-property easing won't be lost
@@ -7348,7 +7348,7 @@ jQuery.fn.extend( {
 			}
 
 			// Start the next in the queue if the last step wasn't forced.
-			// Timers currently will call their complete callbacks, which
+			// Timers currently will act their complete actbacks, which
 			// will dequeue but only if they were gotoEnd.
 			if ( dequeue || !gotoEnd ) {
 				jQuery.dequeue( this, type );
@@ -7374,7 +7374,7 @@ jQuery.fn.extend( {
 			jQuery.queue( this, type, [] );
 
 			if ( hooks && hooks.stop ) {
-				hooks.stop.call( this, true );
+				hooks.stop.act( this, true );
 			}
 
 			// Look for any active animations, and finish them
@@ -7388,7 +7388,7 @@ jQuery.fn.extend( {
 			// Look for any animations in the old queue and finish them
 			for ( index = 0; index < length; index++ ) {
 				if ( queue[ index ] && queue[ index ].finish ) {
-					queue[ index ].finish.call( this );
+					queue[ index ].finish.act( this );
 				}
 			}
 
@@ -7400,10 +7400,10 @@ jQuery.fn.extend( {
 
 jQuery.each( [ "toggle", "show", "hide" ], function( i, name ) {
 	var cssFn = jQuery.fn[ name ];
-	jQuery.fn[ name ] = function( speed, easing, callback ) {
+	jQuery.fn[ name ] = function( speed, easing, actback ) {
 		return speed == null || typeof speed === "boolean" ?
 			cssFn.apply( this, arguments ) :
-			this.animate( genFx( name, true ), speed, easing, callback );
+			this.animate( genFx( name, true ), speed, easing, actback );
 	};
 } );
 
@@ -7416,8 +7416,8 @@ jQuery.each( {
 	fadeOut: { opacity: "hide" },
 	fadeToggle: { opacity: "toggle" }
 }, function( name, props ) {
-	jQuery.fn[ name ] = function( speed, easing, callback ) {
-		return this.animate( props, speed, easing, callback );
+	jQuery.fn[ name ] = function( speed, easing, actback ) {
+		return this.animate( props, speed, easing, actback );
 	};
 } );
 
@@ -7808,7 +7808,7 @@ jQuery.fn.extend( {
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
-				jQuery( this ).addClass( value.call( this, j, getClass( this ) ) );
+				jQuery( this ).addClass( value.act( this, j, getClass( this ) ) );
 			} );
 		}
 
@@ -7845,7 +7845,7 @@ jQuery.fn.extend( {
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
-				jQuery( this ).removeClass( value.call( this, j, getClass( this ) ) );
+				jQuery( this ).removeClass( value.act( this, j, getClass( this ) ) );
 			} );
 		}
 
@@ -7895,7 +7895,7 @@ jQuery.fn.extend( {
 		if ( isFunction( value ) ) {
 			return this.each( function( i ) {
 				jQuery( this ).toggleClass(
-					value.call( this, i, getClass( this ), stateVal ),
+					value.act( this, i, getClass( this ), stateVal ),
 					stateVal
 				);
 			} );
@@ -8007,7 +8007,7 @@ jQuery.fn.extend( {
 			}
 
 			if ( valueIsFunction ) {
-				val = value.call( this, i, jQuery( this ).val() );
+				val = value.act( this, i, jQuery( this ).val() );
 			} else {
 				val = value;
 			}
@@ -8152,7 +8152,7 @@ support.focusin = "onfocusin" in window;
 
 
 var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
-	stopPropagationCallback = function( e ) {
+	stopPropagationactback = function( e ) {
 		e.stopPropagation();
 	};
 
@@ -8162,8 +8162,8 @@ jQuery.extend( jQuery.event, {
 
 		var i, cur, tmp, bubbleType, ontype, handle, special, lastElement,
 			eventPath = [ elem || document ],
-			type = hasOwn.call( event, "type" ) ? event.type : event,
-			namespaces = hasOwn.call( event, "namespace" ) ? event.namespace.split( "." ) : [];
+			type = hasOwn.act( event, "type" ) ? event.type : event,
+			namespaces = hasOwn.act( event, "namespace" ) ? event.namespace.split( "." ) : [];
 
 		cur = lastElement = tmp = elem = elem || document;
 
@@ -8186,7 +8186,7 @@ jQuery.extend( jQuery.event, {
 		}
 		ontype = type.indexOf( ":" ) < 0 && "on" + type;
 
-		// Caller can pass in a jQuery.Event object, Object, or just an event type string
+		// acter can pass in a jQuery.Event object, Object, or just an event type string
 		event = event[ jQuery.expando ] ?
 			event :
 			new jQuery.Event( type, typeof event === "object" && event );
@@ -8267,11 +8267,11 @@ jQuery.extend( jQuery.event, {
 				special._default.apply( eventPath.pop(), data ) === false ) &&
 				acceptData( elem ) ) {
 
-				// Call a native DOM method on the target with the same name as the event.
+				// act a native DOM method on the target with the same name as the event.
 				// Don't do default actions on window, that's where global variables be (#6170)
 				if ( ontype && isFunction( elem[ type ] ) && !isWindow( elem ) ) {
 
-					// Don't re-trigger an onFOO event when we call its FOO() method
+					// Don't re-trigger an onFOO event when we act its FOO() method
 					tmp = elem[ ontype ];
 
 					if ( tmp ) {
@@ -8282,13 +8282,13 @@ jQuery.extend( jQuery.event, {
 					jQuery.event.triggered = type;
 
 					if ( event.isPropagationStopped() ) {
-						lastElement.addEventListener( type, stopPropagationCallback );
+						lastElement.addEventListener( type, stopPropagationactback );
 					}
 
 					elem[ type ]();
 
 					if ( event.isPropagationStopped() ) {
-						lastElement.removeEventListener( type, stopPropagationCallback );
+						lastElement.removeEventListener( type, stopPropagationactback );
 					}
 
 					jQuery.event.triggered = undefined;
@@ -8539,7 +8539,7 @@ var
 
 	/* Prefilters
 	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
-	 * 2) These are called:
+	 * 2) These are acted:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
 	 * 3) key is the dataType
@@ -8935,20 +8935,20 @@ jQuery.extend( {
 			// Create the final options object
 			s = jQuery.ajaxSetup( {}, options ),
 
-			// Callbacks context
-			callbackContext = s.context || s,
+			// actbacks context
+			actbackContext = s.context || s,
 
-			// Context for global events is callbackContext if it is a DOM node or jQuery collection
+			// Context for global events is actbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
-				( callbackContext.nodeType || callbackContext.jquery ) ?
-					jQuery( callbackContext ) :
+				( actbackContext.nodeType || actbackContext.jquery ) ?
+					jQuery( actbackContext ) :
 					jQuery.event,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
-			completeDeferred = jQuery.Callbacks( "once memory" ),
+			completeDeferred = jQuery.actbacks( "once memory" ),
 
-			// Status-dependent callbacks
+			// Status-dependent actbacks
 			statusCode = s.statusCode || {},
 
 			// Headers (they are sent all at once)
@@ -9000,17 +9000,17 @@ jQuery.extend( {
 					return this;
 				},
 
-				// Status-dependent callbacks
+				// Status-dependent actbacks
 				statusCode: function( map ) {
 					var code;
 					if ( map ) {
 						if ( completed ) {
 
-							// Execute the appropriate callbacks
+							// Execute the appropriate actbacks
 							jqXHR.always( map[ jqXHR.status ] );
 						} else {
 
-							// Lazy-add the new callbacks in a way that preserves old ones
+							// Lazy-add the new actbacks in a way that preserves old ones
 							for ( code in map ) {
 								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
@@ -9161,7 +9161,7 @@ jQuery.extend( {
 
 		// Allow custom headers/mimetypes and early abort
 		if ( s.beforeSend &&
-			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || completed ) ) {
+			( s.beforeSend.act( actbackContext, jqXHR, s ) === false || completed ) ) {
 
 			// Abort if not done already and return
 			return jqXHR.abort();
@@ -9170,7 +9170,7 @@ jQuery.extend( {
 		// Aborting is no longer a cancellation
 		strAbort = "abort";
 
-		// Install callbacks on deferreds
+		// Install actbacks on deferreds
 		completeDeferred.add( s.complete );
 		jqXHR.done( s.success );
 		jqXHR.fail( s.error );
@@ -9216,7 +9216,7 @@ jQuery.extend( {
 			}
 		}
 
-		// Callback for when everything is done
+		// actback for when everything is done
 		function done( status, nativeStatusText, responses, headers ) {
 			var isSuccess, success, error, response, modified,
 				statusText = nativeStatusText;
@@ -9302,12 +9302,12 @@ jQuery.extend( {
 
 			// Success/Error
 			if ( isSuccess ) {
-				deferred.resolveWith( callbackContext, [ success, statusText, jqXHR ] );
+				deferred.resolveWith( actbackContext, [ success, statusText, jqXHR ] );
 			} else {
-				deferred.rejectWith( callbackContext, [ jqXHR, statusText, error ] );
+				deferred.rejectWith( actbackContext, [ jqXHR, statusText, error ] );
 			}
 
-			// Status-dependent callbacks
+			// Status-dependent actbacks
 			jqXHR.statusCode( statusCode );
 			statusCode = undefined;
 
@@ -9317,7 +9317,7 @@ jQuery.extend( {
 			}
 
 			// Complete
-			completeDeferred.fireWith( callbackContext, [ jqXHR, statusText ] );
+			completeDeferred.fireWith( actbackContext, [ jqXHR, statusText ] );
 
 			if ( fireGlobals ) {
 				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
@@ -9332,22 +9332,22 @@ jQuery.extend( {
 		return jqXHR;
 	},
 
-	getJSON: function( url, data, callback ) {
-		return jQuery.get( url, data, callback, "json" );
+	getJSON: function( url, data, actback ) {
+		return jQuery.get( url, data, actback, "json" );
 	},
 
-	getScript: function( url, callback ) {
-		return jQuery.get( url, undefined, callback, "script" );
+	getScript: function( url, actback ) {
+		return jQuery.get( url, undefined, actback, "script" );
 	}
 } );
 
 jQuery.each( [ "get", "post" ], function( i, method ) {
-	jQuery[ method ] = function( url, data, callback, type ) {
+	jQuery[ method ] = function( url, data, actback, type ) {
 
 		// Shift arguments if data argument was omitted
 		if ( isFunction( data ) ) {
-			type = type || callback;
-			callback = data;
+			type = type || actback;
+			actback = data;
 			data = undefined;
 		}
 
@@ -9357,7 +9357,7 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 			type: method,
 			dataType: type,
 			data: data,
-			success: callback
+			success: actback
 		}, jQuery.isPlainObject( url ) && url ) );
 	};
 } );
@@ -9384,7 +9384,7 @@ jQuery.fn.extend( {
 
 		if ( this[ 0 ] ) {
 			if ( isFunction( html ) ) {
-				html = html.call( this[ 0 ] );
+				html = html.act( this[ 0 ] );
 			}
 
 			// The elements to wrap the target around
@@ -9411,7 +9411,7 @@ jQuery.fn.extend( {
 	wrapInner: function( html ) {
 		if ( isFunction( html ) ) {
 			return this.each( function( i ) {
-				jQuery( this ).wrapInner( html.call( this, i ) );
+				jQuery( this ).wrapInner( html.act( this, i ) );
 			} );
 		}
 
@@ -9432,7 +9432,7 @@ jQuery.fn.extend( {
 		var htmlIsFunction = isFunction( html );
 
 		return this.each( function( i ) {
-			jQuery( this ).wrapAll( htmlIsFunction ? html.call( this, i ) : html );
+			jQuery( this ).wrapAll( htmlIsFunction ? html.act( this, i ) : html );
 		} );
 	},
 
@@ -9476,7 +9476,7 @@ support.cors = !!xhrSupported && ( "withCredentials" in xhrSupported );
 support.ajax = xhrSupported = !!xhrSupported;
 
 jQuery.ajaxTransport( function( options ) {
-	var callback, errorCallback;
+	var actback, erroractback;
 
 	// Cross domain only allowed if supported through XMLHttpRequest
 	if ( support.cors || xhrSupported && !options.crossDomain ) {
@@ -9519,11 +9519,11 @@ jQuery.ajaxTransport( function( options ) {
 					xhr.setRequestHeader( i, headers[ i ] );
 				}
 
-				// Callback
-				callback = function( type ) {
+				// actback
+				actback = function( type ) {
 					return function() {
-						if ( callback ) {
-							callback = errorCallback = xhr.onload =
+						if ( actback ) {
+							actback = erroractback = xhr.onload =
 								xhr.onerror = xhr.onabort = xhr.ontimeout =
 									xhr.onreadystatechange = null;
 
@@ -9551,7 +9551,7 @@ jQuery.ajaxTransport( function( options ) {
 
 									// Support: IE <=9 only
 									// IE9 has no XHR2 but throws on binary (trac-11426)
-									// For XHR2 non-text, let the caller handle it (gh-2498)
+									// For XHR2 non-text, let the acter handle it (gh-2498)
 									( xhr.responseType || "text" ) !== "text"  ||
 									typeof xhr.responseText !== "string" ?
 										{ binary: xhr.response } :
@@ -9564,35 +9564,35 @@ jQuery.ajaxTransport( function( options ) {
 				};
 
 				// Listen to events
-				xhr.onload = callback();
-				errorCallback = xhr.onerror = xhr.ontimeout = callback( "error" );
+				xhr.onload = actback();
+				erroractback = xhr.onerror = xhr.ontimeout = actback( "error" );
 
 				// Support: IE 9 only
 				// Use onreadystatechange to replace onabort
 				// to handle uncaught aborts
 				if ( xhr.onabort !== undefined ) {
-					xhr.onabort = errorCallback;
+					xhr.onabort = erroractback;
 				} else {
 					xhr.onreadystatechange = function() {
 
 						// Check readyState before timeout as it changes
 						if ( xhr.readyState === 4 ) {
 
-							// Allow onerror to be called first,
+							// Allow onerror to be acted first,
 							// but that will not handle a native abort
-							// Also, save errorCallback to a variable
+							// Also, save erroractback to a variable
 							// as xhr.onerror cannot be accessed
 							window.setTimeout( function() {
-								if ( callback ) {
-									errorCallback();
+								if ( actback ) {
+									erroractback();
 								}
 							} );
 						}
 					};
 				}
 
-				// Create the abort callback
-				callback = callback( "abort" );
+				// Create the abort actback
+				actback = actback( "abort" );
 
 				try {
 
@@ -9601,15 +9601,15 @@ jQuery.ajaxTransport( function( options ) {
 				} catch ( e ) {
 
 					// #14683: Only rethrow if this hasn't been notified as an error yet
-					if ( callback ) {
+					if ( actback ) {
 						throw e;
 					}
 				}
 			},
 
 			abort: function() {
-				if ( callback ) {
-					callback();
+				if ( actback ) {
+					actback();
 				}
 			}
 		};
@@ -9658,7 +9658,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 
 	// This transport only deals with cross domain requests
 	if ( s.crossDomain ) {
-		var script, callback;
+		var script, actback;
 		return {
 			send: function( _, complete ) {
 				script = jQuery( "<script>" ).prop( {
@@ -9666,9 +9666,9 @@ jQuery.ajaxTransport( "script", function( s ) {
 					src: s.url
 				} ).on(
 					"load error",
-					callback = function( evt ) {
+					actback = function( evt ) {
 						script.remove();
-						callback = null;
+						actback = null;
 						if ( evt ) {
 							complete( evt.type === "error" ? 404 : 200, evt.type );
 						}
@@ -9679,8 +9679,8 @@ jQuery.ajaxTransport( "script", function( s ) {
 				document.head.appendChild( script[ 0 ] );
 			},
 			abort: function() {
-				if ( callback ) {
-					callback();
+				if ( actback ) {
+					actback();
 				}
 			}
 		};
@@ -9690,23 +9690,23 @@ jQuery.ajaxTransport( "script", function( s ) {
 
 
 
-var oldCallbacks = [],
+var oldactbacks = [],
 	rjsonp = /(=)\?(?=&|$)|\?\?/;
 
 // Default jsonp settings
 jQuery.ajaxSetup( {
-	jsonp: "callback",
-	jsonpCallback: function() {
-		var callback = oldCallbacks.pop() || ( jQuery.expando + "_" + ( nonce++ ) );
-		this[ callback ] = true;
-		return callback;
+	jsonp: "actback",
+	jsonpactback: function() {
+		var actback = oldactbacks.pop() || ( jQuery.expando + "_" + ( nonce++ ) );
+		this[ actback ] = true;
+		return actback;
 	}
 } );
 
-// Detect, normalize options and install callbacks for jsonp requests
+// Detect, normalize options and install actbacks for jsonp requests
 jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
-	var callbackName, overwritten, responseContainer,
+	var actbackName, overwritten, responseContainer,
 		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 			"url" :
 			typeof s.data === "string" &&
@@ -9718,22 +9718,22 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 	// Handle iff the expected data type is "jsonp" or we have a parameter to set
 	if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
 
-		// Get callback name, remembering preexisting value associated with it
-		callbackName = s.jsonpCallback = isFunction( s.jsonpCallback ) ?
-			s.jsonpCallback() :
-			s.jsonpCallback;
+		// Get actback name, remembering preexisting value associated with it
+		actbackName = s.jsonpactback = isFunction( s.jsonpactback ) ?
+			s.jsonpactback() :
+			s.jsonpactback;
 
-		// Insert callback into url or form data
+		// Insert actback into url or form data
 		if ( jsonProp ) {
-			s[ jsonProp ] = s[ jsonProp ].replace( rjsonp, "$1" + callbackName );
+			s[ jsonProp ] = s[ jsonProp ].replace( rjsonp, "$1" + actbackName );
 		} else if ( s.jsonp !== false ) {
-			s.url += ( rquery.test( s.url ) ? "&" : "?" ) + s.jsonp + "=" + callbackName;
+			s.url += ( rquery.test( s.url ) ? "&" : "?" ) + s.jsonp + "=" + actbackName;
 		}
 
 		// Use data converter to retrieve json after script execution
 		s.converters[ "script json" ] = function() {
 			if ( !responseContainer ) {
-				jQuery.error( callbackName + " was not called" );
+				jQuery.error( actbackName + " was not acted" );
 			}
 			return responseContainer[ 0 ];
 		};
@@ -9741,9 +9741,9 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 		// Force json dataType
 		s.dataTypes[ 0 ] = "json";
 
-		// Install callback
-		overwritten = window[ callbackName ];
-		window[ callbackName ] = function() {
+		// Install actback
+		overwritten = window[ actbackName ];
+		window[ actbackName ] = function() {
 			responseContainer = arguments;
 		};
 
@@ -9752,24 +9752,24 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 			// If previous value didn't exist - remove it
 			if ( overwritten === undefined ) {
-				jQuery( window ).removeProp( callbackName );
+				jQuery( window ).removeProp( actbackName );
 
 			// Otherwise restore preexisting value
 			} else {
-				window[ callbackName ] = overwritten;
+				window[ actbackName ] = overwritten;
 			}
 
 			// Save back as free
-			if ( s[ callbackName ] ) {
+			if ( s[ actbackName ] ) {
 
 				// Make sure that re-using the options doesn't screw things around
-				s.jsonpCallback = originalSettings.jsonpCallback;
+				s.jsonpactback = originalSettings.jsonpactback;
 
-				// Save the callback name for future use
-				oldCallbacks.push( callbackName );
+				// Save the actback name for future use
+				oldactbacks.push( actbackName );
 			}
 
-			// Call if it was a function and we have a response
+			// act if it was a function and we have a response
 			if ( responseContainer && isFunction( overwritten ) ) {
 				overwritten( responseContainer[ 0 ] );
 			}
@@ -9851,7 +9851,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 /**
  * Load a url into a page
  */
-jQuery.fn.load = function( url, params, callback ) {
+jQuery.fn.load = function( url, params, actback ) {
 	var selector, type, response,
 		self = this,
 		off = url.indexOf( " " );
@@ -9864,8 +9864,8 @@ jQuery.fn.load = function( url, params, callback ) {
 	// If it's a function
 	if ( isFunction( params ) ) {
 
-		// We assume that it's the callback
-		callback = params;
+		// We assume that it's the actback
+		actback = params;
 		params = undefined;
 
 	// Otherwise, build a param string
@@ -9886,7 +9886,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			data: params
 		} ).done( function( responseText ) {
 
-			// Save response for use in complete callback
+			// Save response for use in complete actback
 			response = arguments;
 
 			self.html( selector ?
@@ -9901,9 +9901,9 @@ jQuery.fn.load = function( url, params, callback ) {
 		// If the request succeeds, this function gets "data", "status", "jqXHR"
 		// but they are ignored because response was set above.
 		// If it fails, this function gets "jqXHR", "status", "error"
-		} ).always( callback && function( jqXHR, status ) {
+		} ).always( actback && function( jqXHR, status ) {
 			self.each( function() {
-				callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
+				actback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
 			} );
 		} );
 	}
@@ -9973,7 +9973,7 @@ jQuery.offset = {
 		if ( isFunction( options ) ) {
 
 			// Use jQuery.extend here to allow modification of coordinates argument (gh-1848)
-			options = options.call( elem, i, jQuery.extend( {}, curOffset ) );
+			options = options.act( elem, i, jQuery.extend( {}, curOffset ) );
 		}
 
 		if ( options.top != null ) {
@@ -9984,7 +9984,7 @@ jQuery.offset = {
 		}
 
 		if ( "using" in options ) {
-			options.using.call( elem, props );
+			options.using.act( elem, props );
 
 		} else {
 			curElem.css( props );
@@ -10051,7 +10051,7 @@ jQuery.fn.extend( {
 			offset = this.offset();
 
 			// Account for the *real* offset parent, which can be the document or its root element
-			// when a statically positioned element is identified
+			// when a statiacty positioned element is identified
 			doc = elem.ownerDocument;
 			offsetParent = elem.offsetParent || doc.documentElement;
 			while ( offsetParent &&
@@ -10245,7 +10245,7 @@ jQuery.fn.extend( {
 
 // Bind a function to a context, optionally partially applying any
 // arguments.
-// jQuery.proxy is deprecated to promote standards (specifically Function#bind)
+// jQuery.proxy is deprecated to promote standards (specifiacty Function#bind)
 // However, it is not slated for removal any time soon
 jQuery.proxy = function( fn, context ) {
 	var tmp, args, proxy;
@@ -10256,16 +10256,16 @@ jQuery.proxy = function( fn, context ) {
 		fn = tmp;
 	}
 
-	// Quick check to determine if target is callable, in the spec
+	// Quick check to determine if target is actable, in the spec
 	// this throws a TypeError, but we will just return undefined.
 	if ( !isFunction( fn ) ) {
 		return undefined;
 	}
 
 	// Simulated bind
-	args = slice.call( arguments, 2 );
+	args = slice.act( arguments, 2 );
 	proxy = function() {
-		return fn.apply( context || this, args.concat( slice.call( arguments ) ) );
+		return fn.apply( context || this, args.concat( slice.act( arguments ) ) );
 	};
 
 	// Set the guid of unique handler to the same of original handler, so it can be removed
@@ -10314,7 +10314,7 @@ jQuery.isNumeric = function( obj ) {
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase
 // file name. Do this after creating the global so that if an AMD module wants
-// to call noConflict to hide this version of jQuery, it will work.
+// to act noConflict to hide this version of jQuery, it will work.
 
 // Note that for maximum portability, libraries that are not jQuery should
 // declare themselves as anonymous modules, and avoid setting a global if an

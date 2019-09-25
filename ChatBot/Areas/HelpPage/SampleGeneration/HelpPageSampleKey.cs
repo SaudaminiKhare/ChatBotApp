@@ -21,7 +21,7 @@ namespace ChatBot.Areas.HelpPage
                 throw new ArgumentNullException("mediaType");
             }
 
-            ActionName = String.Empty;
+            actionName = String.Empty;
             ControllerName = String.Empty;
             MediaType = mediaType;
             ParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -70,7 +70,7 @@ namespace ChatBot.Areas.HelpPage
             }
 
             ControllerName = controllerName;
-            ActionName = actionName;
+            actionName = actionName;
             ParameterNames = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
             SampleDirection = sampleDirection;
         }
@@ -108,7 +108,7 @@ namespace ChatBot.Areas.HelpPage
         /// <value>
         /// The name of the action.
         /// </value>
-        public string ActionName { get; private set; }
+        public string actionName { get; private set; }
 
         /// <summary>
         /// Gets the media type.
@@ -139,7 +139,7 @@ namespace ChatBot.Areas.HelpPage
             }
 
             return String.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                String.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
+                String.Equals(actionName, otherKey.actionName, StringComparison.OrdinalIgnoreCase) &&
                 (MediaType == otherKey.MediaType || (MediaType != null && MediaType.Equals(otherKey.MediaType))) &&
                 ParameterType == otherKey.ParameterType &&
                 SampleDirection == otherKey.SampleDirection &&
@@ -148,7 +148,7 @@ namespace ChatBot.Areas.HelpPage
 
         public override int GetHashCode()
         {
-            int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();
+            int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ actionName.ToUpperInvariant().GetHashCode();
             if (MediaType != null)
             {
                 hashCode ^= MediaType.GetHashCode();

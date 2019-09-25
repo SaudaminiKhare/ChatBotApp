@@ -44,11 +44,11 @@ intellisense.annotate(jQuery, {
     /// <summary>The version number of the rendering engine for the user's browser. This property was removed in jQuery 1.9 and is available only through the jQuery.migrate plugin.</summary>
     /// <returns type="String" />
   },
-  'Callbacks': function() {
+  'actbacks': function() {
     /// <signature>
-    ///   <summary>A multi-purpose callbacks list object that provides a powerful way to manage callback lists.</summary>
-    ///   <param name="flags" type="String">An optional list of space-separated flags that change how the callback list behaves.</param>
-    ///   <returns type="Callbacks" />
+    ///   <summary>A multi-purpose actbacks list object that provides a powerful way to manage actback lists.</summary>
+    ///   <param name="flags" type="String">An optional list of space-separated flags that change how the actback list behaves.</param>
+    ///   <returns type="actbacks" />
     /// </signature>
   },
   'contains': function() {
@@ -78,8 +78,8 @@ intellisense.annotate(jQuery, {
   },
   'Deferred': function() {
     /// <signature>
-    ///   <summary>A constructor function that returns a chainable utility object with methods to register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.</summary>
-    ///   <param name="beforeStart" type="Function">A function that is called just before the constructor returns.</param>
+    ///   <summary>A constructor function that returns a chainable utility object with methods to register multiple actbacks into actback queues, invoke actback queues, and relay the success or failure state of any synchronous or asynchronous function.</summary>
+    ///   <param name="beforeStart" type="Function">A function that is acted just before the constructor returns.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
@@ -94,7 +94,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.</summary>
     ///   <param name="collection" type="Object">The object or array to iterate over.</param>
-    ///   <param name="callback(indexInArray, valueOfElement)" type="Function">The function that will be executed on every object.</param>
+    ///   <param name="actback(indexInArray, valueOfElement)" type="Function">The function that will be executed on every object.</param>
     ///   <returns type="Object" />
     /// </signature>
   },
@@ -133,7 +133,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Load data from the server using a HTTP GET request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
     ///   <param name="data" type="">A plain object or string that is sent to the server with the request.</param>
-    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A actback function that is executed if the request succeeds.</param>
     ///   <param name="dataType" type="String">The type of data expected from the server. Default: Intelligent Guess (xml, json, script, or html).</param>
     ///   <returns type="jqXHR" />
     /// </signature>
@@ -143,7 +143,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Load JSON-encoded data from the server using a GET HTTP request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
     ///   <param name="data" type="PlainObject">A plain object or string that is sent to the server with the request.</param>
-    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A actback function that is executed if the request succeeds.</param>
     ///   <returns type="jqXHR" />
     /// </signature>
   },
@@ -151,7 +151,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Load a JavaScript file from the server using a GET HTTP request, then execute it.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
-    ///   <param name="success(script, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <param name="success(script, textStatus, jqXHR)" type="Function">A actback function that is executed if the request succeeds.</param>
     ///   <returns type="jqXHR" />
     /// </signature>
   },
@@ -166,7 +166,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Finds the elements of an array which satisfy a filter function. The original array is not affected.</summary>
     ///   <param name="array" type="Array">The array to search through.</param>
     ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
-    ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
+    ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "actback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "actback" returns false.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -252,13 +252,13 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="array" type="Array">The Array to translate.</param>
-    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="actback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="actback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -325,7 +325,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Load data from the server using a HTTP POST request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
     ///   <param name="data" type="">A plain object or string that is sent to the server with the request.</param>
-    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds. Required if dataType is provided, but can be null in that case.</param>
+    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A actback function that is executed if the request succeeds. Required if dataType is provided, but can be null in that case.</param>
     ///   <param name="dataType" type="String">The type of data expected from the server. Default: Intelligent Guess (xml, json, script, text, html).</param>
     ///   <returns type="jqXHR" />
     /// </signature>
@@ -370,7 +370,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Manipulate the queue of functions to be executed on the matched element.</summary>
     ///   <param name="element" type="Element">A DOM element on which to add a queued function.</param>
     ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
-    ///   <param name="callback()" type="Function">The new function to add to the queue.</param>
+    ///   <param name="actback()" type="Function">The new function to add to the queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -413,82 +413,82 @@ intellisense.annotate(jQuery, {
   },
   'when': function() {
     /// <signature>
-    ///   <summary>Provides a way to execute callback functions based on one or more objects, usually Deferred objects that represent asynchronous events.</summary>
+    ///   <summary>Provides a way to execute actback functions based on one or more objects, usually Deferred objects that represent asynchronous events.</summary>
     ///   <param name="deferreds" type="Deferred">One or more Deferred objects, or plain JavaScript objects.</param>
     ///   <returns type="Promise" />
     /// </signature>
   },
 });
 
-var _1228819969 = jQuery.Callbacks;
-jQuery.Callbacks = function(flags) {
+var _1228819969 = jQuery.actbacks;
+jQuery.actbacks = function(flags) {
 var _object = _1228819969(flags);
 intellisense.annotate(_object, {
   'add': function() {
     /// <signature>
-    ///   <summary>Add a callback or a collection of callbacks to a callback list.</summary>
-    ///   <param name="callbacks" type="">A function, or array of functions, that are to be added to the callback list.</param>
-    ///   <returns type="Callbacks" />
+    ///   <summary>Add a actback or a collection of actbacks to a actback list.</summary>
+    ///   <param name="actbacks" type="">A function, or array of functions, that are to be added to the actback list.</param>
+    ///   <returns type="actbacks" />
     /// </signature>
   },
   'disable': function() {
-    /// <summary>Disable a callback list from doing anything more.</summary>
-    /// <returns type="Callbacks" />
+    /// <summary>Disable a actback list from doing anything more.</summary>
+    /// <returns type="actbacks" />
   },
   'disabled': function() {
-    /// <summary>Determine if the callbacks list has been disabled.</summary>
+    /// <summary>Determine if the actbacks list has been disabled.</summary>
     /// <returns type="Boolean" />
   },
   'empty': function() {
-    /// <summary>Remove all of the callbacks from a list.</summary>
-    /// <returns type="Callbacks" />
+    /// <summary>Remove all of the actbacks from a list.</summary>
+    /// <returns type="actbacks" />
   },
   'fire': function() {
     /// <signature>
-    ///   <summary>Call all of the callbacks with the given arguments</summary>
-    ///   <param name="arguments" type="Anything">The argument or list of arguments to pass back to the callback list.</param>
-    ///   <returns type="Callbacks" />
+    ///   <summary>act all of the actbacks with the given arguments</summary>
+    ///   <param name="arguments" type="Anything">The argument or list of arguments to pass back to the actback list.</param>
+    ///   <returns type="actbacks" />
     /// </signature>
   },
   'fired': function() {
-    /// <summary>Determine if the callbacks have already been called at least once.</summary>
+    /// <summary>Determine if the actbacks have already been acted at least once.</summary>
     /// <returns type="Boolean" />
   },
   'fireWith': function() {
     /// <signature>
-    ///   <summary>Call all callbacks in a list with the given context and arguments.</summary>
-    ///   <param name="context" type="">A reference to the context in which the callbacks in the list should be fired.</param>
-    ///   <param name="args" type="">An argument, or array of arguments, to pass to the callbacks in the list.</param>
-    ///   <returns type="Callbacks" />
+    ///   <summary>act all actbacks in a list with the given context and arguments.</summary>
+    ///   <param name="context" type="">A reference to the context in which the actbacks in the list should be fired.</param>
+    ///   <param name="args" type="">An argument, or array of arguments, to pass to the actbacks in the list.</param>
+    ///   <returns type="actbacks" />
     /// </signature>
   },
   'has': function() {
     /// <signature>
-    ///   <summary>Determine whether a supplied callback is in a list</summary>
-    ///   <param name="callback" type="Function">The callback to search for.</param>
+    ///   <summary>Determine whether a supplied actback is in a list</summary>
+    ///   <param name="actback" type="Function">The actback to search for.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
   'lock': function() {
-    /// <summary>Lock a callback list in its current state.</summary>
-    /// <returns type="Callbacks" />
+    /// <summary>Lock a actback list in its current state.</summary>
+    /// <returns type="actbacks" />
   },
   'locked': function() {
-    /// <summary>Determine if the callbacks list has been locked.</summary>
+    /// <summary>Determine if the actbacks list has been locked.</summary>
     /// <returns type="Boolean" />
   },
   'remove': function() {
     /// <signature>
-    ///   <summary>Remove a callback or a collection of callbacks from a callback list.</summary>
-    ///   <param name="callbacks" type="">A function, or array of functions, that are to be removed from the callback list.</param>
-    ///   <returns type="Callbacks" />
+    ///   <summary>Remove a actback or a collection of actbacks from a actback list.</summary>
+    ///   <param name="actbacks" type="">A function, or array of functions, that are to be removed from the actback list.</param>
+    ///   <returns type="actbacks" />
     /// </signature>
   },
 });
 
 return _object;
 };
-intellisense.redirectDefinition(jQuery.Callbacks, _1228819969);
+intellisense.redirectDefinition(jQuery.actbacks, _1228819969);
 
 var _731531622 = jQuery.Deferred;
 jQuery.Deferred = function(func) {
@@ -496,25 +496,25 @@ var _object = _731531622(func);
 intellisense.annotate(_object, {
   'always': function() {
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is either resolved or rejected.</summary>
-    ///   <param name="alwaysCallbacks" type="Function">A function, or array of functions, that is called when the Deferred is resolved or rejected.</param>
-    ///   <param name="alwaysCallbacks" type="Function">Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is either resolved or rejected.</summary>
+    ///   <param name="alwaysactbacks" type="Function">A function, or array of functions, that is acted when the Deferred is resolved or rejected.</param>
+    ///   <param name="alwaysactbacks" type="Function">Optional additional functions, or arrays of functions, that are acted when the Deferred is resolved or rejected.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'done': function() {
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is resolved.</summary>
-    ///   <param name="doneCallbacks" type="Function">A function, or array of functions, that are called when the Deferred is resolved.</param>
-    ///   <param name="doneCallbacks" type="Function">Optional additional functions, or arrays of functions, that are called when the Deferred is resolved.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is resolved.</summary>
+    ///   <param name="doneactbacks" type="Function">A function, or array of functions, that are acted when the Deferred is resolved.</param>
+    ///   <param name="doneactbacks" type="Function">Optional additional functions, or arrays of functions, that are acted when the Deferred is resolved.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'fail': function() {
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is rejected.</summary>
-    ///   <param name="failCallbacks" type="Function">A function, or array of functions, that are called when the Deferred is rejected.</param>
-    ///   <param name="failCallbacks" type="Function">Optional additional functions, or arrays of functions, that are called when the Deferred is rejected.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is rejected.</summary>
+    ///   <param name="failactbacks" type="Function">A function, or array of functions, that are acted when the Deferred is rejected.</param>
+    ///   <param name="failactbacks" type="Function">Optional additional functions, or arrays of functions, that are acted when the Deferred is rejected.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
@@ -528,38 +528,38 @@ intellisense.annotate(_object, {
   },
   'notify': function() {
     /// <signature>
-    ///   <summary>Call the progressCallbacks on a Deferred object with the given args.</summary>
-    ///   <param name="args" type="Object">Optional arguments that are passed to the progressCallbacks.</param>
+    ///   <summary>act the progressactbacks on a Deferred object with the given args.</summary>
+    ///   <param name="args" type="Object">Optional arguments that are passed to the progressactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'notifyWith': function() {
     /// <signature>
-    ///   <summary>Call the progressCallbacks on a Deferred object with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the progressCallbacks as the this object.</param>
-    ///   <param name="args" type="Object">Optional arguments that are passed to the progressCallbacks.</param>
+    ///   <summary>act the progressactbacks on a Deferred object with the given context and args.</summary>
+    ///   <param name="context" type="Object">Context passed to the progressactbacks as the this object.</param>
+    ///   <param name="args" type="Object">Optional arguments that are passed to the progressactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'pipe': function() {
     /// <signature>
     ///   <summary>Utility method to filter and/or chain Deferreds.</summary>
-    ///   <param name="doneFilter" type="Function">An optional function that is called when the Deferred is resolved.</param>
-    ///   <param name="failFilter" type="Function">An optional function that is called when the Deferred is rejected.</param>
+    ///   <param name="doneFilter" type="Function">An optional function that is acted when the Deferred is resolved.</param>
+    ///   <param name="failFilter" type="Function">An optional function that is acted when the Deferred is rejected.</param>
     ///   <returns type="Promise" />
     /// </signature>
     /// <signature>
     ///   <summary>Utility method to filter and/or chain Deferreds.</summary>
-    ///   <param name="doneFilter" type="Function">An optional function that is called when the Deferred is resolved.</param>
-    ///   <param name="failFilter" type="Function">An optional function that is called when the Deferred is rejected.</param>
-    ///   <param name="progressFilter" type="Function">An optional function that is called when progress notifications are sent to the Deferred.</param>
+    ///   <param name="doneFilter" type="Function">An optional function that is acted when the Deferred is resolved.</param>
+    ///   <param name="failFilter" type="Function">An optional function that is acted when the Deferred is rejected.</param>
+    ///   <param name="progressFilter" type="Function">An optional function that is acted when progress notifications are sent to the Deferred.</param>
     ///   <returns type="Promise" />
     /// </signature>
   },
   'progress': function() {
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object generates progress notifications.</summary>
-    ///   <param name="progressCallbacks" type="">A function, or array of functions, to be called when the Deferred generates progress notifications.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object generates progress notifications.</summary>
+    ///   <param name="progressactbacks" type="">A function, or array of functions, to be acted when the Deferred generates progress notifications.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
@@ -572,31 +572,31 @@ intellisense.annotate(_object, {
   },
   'reject': function() {
     /// <signature>
-    ///   <summary>Reject a Deferred object and call any failCallbacks with the given args.</summary>
-    ///   <param name="args" type="Anything">Optional arguments that are passed to the failCallbacks.</param>
+    ///   <summary>Reject a Deferred object and act any failactbacks with the given args.</summary>
+    ///   <param name="args" type="Anything">Optional arguments that are passed to the failactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'rejectWith': function() {
     /// <signature>
-    ///   <summary>Reject a Deferred object and call any failCallbacks with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the failCallbacks as the this object.</param>
-    ///   <param name="args" type="Array">An optional array of arguments that are passed to the failCallbacks.</param>
+    ///   <summary>Reject a Deferred object and act any failactbacks with the given context and args.</summary>
+    ///   <param name="context" type="Object">Context passed to the failactbacks as the this object.</param>
+    ///   <param name="args" type="Array">An optional array of arguments that are passed to the failactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'resolve': function() {
     /// <signature>
-    ///   <summary>Resolve a Deferred object and call any doneCallbacks with the given args.</summary>
-    ///   <param name="args" type="Anything">Optional arguments that are passed to the doneCallbacks.</param>
+    ///   <summary>Resolve a Deferred object and act any doneactbacks with the given args.</summary>
+    ///   <param name="args" type="Anything">Optional arguments that are passed to the doneactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'resolveWith': function() {
     /// <signature>
-    ///   <summary>Resolve a Deferred object and call any doneCallbacks with the given context and args.</summary>
-    ///   <param name="context" type="Object">Context passed to the doneCallbacks as the this object.</param>
-    ///   <param name="args" type="Array">An optional array of arguments that are passed to the doneCallbacks.</param>
+    ///   <summary>Resolve a Deferred object and act any doneactbacks with the given context and args.</summary>
+    ///   <param name="context" type="Object">Context passed to the doneactbacks as the this object.</param>
+    ///   <param name="args" type="Array">An optional array of arguments that are passed to the doneactbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
@@ -606,23 +606,23 @@ intellisense.annotate(_object, {
   },
   'then': function() {
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.</summary>
-    ///   <param name="doneFilter" type="Function">A function that is called when the Deferred is resolved.</param>
-    ///   <param name="failFilter" type="Function">An optional function that is called when the Deferred is rejected.</param>
-    ///   <param name="progressFilter" type="Function">An optional function that is called when progress notifications are sent to the Deferred.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is resolved, rejected, or still in progress.</summary>
+    ///   <param name="doneFilter" type="Function">A function that is acted when the Deferred is resolved.</param>
+    ///   <param name="failFilter" type="Function">An optional function that is acted when the Deferred is rejected.</param>
+    ///   <param name="progressFilter" type="Function">An optional function that is acted when progress notifications are sent to the Deferred.</param>
     ///   <returns type="Promise" />
     /// </signature>
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.</summary>
-    ///   <param name="doneCallbacks" type="Function">A function, or array of functions, called when the Deferred is resolved.</param>
-    ///   <param name="failCallbacks" type="Function">A function, or array of functions, called when the Deferred is rejected.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is resolved, rejected, or still in progress.</summary>
+    ///   <param name="doneactbacks" type="Function">A function, or array of functions, acted when the Deferred is resolved.</param>
+    ///   <param name="failactbacks" type="Function">A function, or array of functions, acted when the Deferred is rejected.</param>
     ///   <returns type="Promise" />
     /// </signature>
     /// <signature>
-    ///   <summary>Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.</summary>
-    ///   <param name="doneCallbacks" type="Function">A function, or array of functions, called when the Deferred is resolved.</param>
-    ///   <param name="failCallbacks" type="Function">A function, or array of functions, called when the Deferred is rejected.</param>
-    ///   <param name="progressCallbacks" type="Function">A function, or array of functions, called when the Deferred notifies progress.</param>
+    ///   <summary>Add handlers to be acted when the Deferred object is resolved, rejected, or still in progress.</summary>
+    ///   <param name="doneactbacks" type="Function">A function, or array of functions, acted when the Deferred is resolved.</param>
+    ///   <param name="failactbacks" type="Function">A function, or array of functions, acted when the Deferred is rejected.</param>
+    ///   <param name="progressactbacks" type="Function">A function, or array of functions, acted when the Deferred notifies progress.</param>
     ///   <returns type="Promise" />
     /// </signature>
   },
@@ -630,7 +630,7 @@ intellisense.annotate(_object, {
 
 return _object;
 };
-intellisense.redirectDefinition(jQuery.Callbacks, _731531622);
+intellisense.redirectDefinition(jQuery.actbacks, _731531622);
 
 intellisense.annotate(jQuery.Event.prototype, {
   'currentTarget': function() {
@@ -642,19 +642,19 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <returns type="Object" />
   },
   'delegateTarget': function() {
-    /// <summary>The element where the currently-called jQuery event handler was attached.</summary>
+    /// <summary>The element where the currently-acted jQuery event handler was attached.</summary>
     /// <returns type="Element" />
   },
   'isDefaultPrevented': function() {
-    /// <summary>Returns whether event.preventDefault() was ever called on this event object.</summary>
+    /// <summary>Returns whether event.preventDefault() was ever acted on this event object.</summary>
     /// <returns type="Boolean" />
   },
   'isImmediatePropagationStopped': function() {
-    /// <summary>Returns whether event.stopImmediatePropagation() was ever called on this event object.</summary>
+    /// <summary>Returns whether event.stopImmediatePropagation() was ever acted on this event object.</summary>
     /// <returns type="Boolean" />
   },
   'isPropagationStopped': function() {
-    /// <summary>Returns whether event.stopPropagation() was ever called on this event object.</summary>
+    /// <summary>Returns whether event.stopPropagation() was ever acted on this event object.</summary>
     /// <returns type="Boolean" />
   },
   'metaKey': function() {
@@ -674,7 +674,7 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <returns type="Number" />
   },
   'preventDefault': function() {
-    /// <summary>If this method is called, the default action of the event will not be triggered.</summary>
+    /// <summary>If this method is acted, the default action of the event will not be triggered.</summary>
   },
   'relatedTarget': function() {
     /// <summary>The other DOM element involved in the event, if any.</summary>
@@ -771,14 +771,14 @@ intellisense.annotate(jQuery.fn, {
   },
   'ajaxComplete': function() {
     /// <signature>
-    ///   <summary>Register a handler to be called when Ajax requests complete. This is an AjaxEvent.</summary>
+    ///   <summary>Register a handler to be acted when Ajax requests complete. This is an AjaxEvent.</summary>
     ///   <param name="handler(event, XMLHttpRequest, ajaxOptions)" type="Function">The function to be invoked.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'ajaxError': function() {
     /// <signature>
-    ///   <summary>Register a handler to be called when Ajax requests complete with an error. This is an Ajax Event.</summary>
+    ///   <summary>Register a handler to be acted when Ajax requests complete with an error. This is an Ajax Event.</summary>
     ///   <param name="handler(event, jqXHR, ajaxSettings, thrownError)" type="Function">The function to be invoked.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -792,14 +792,14 @@ intellisense.annotate(jQuery.fn, {
   },
   'ajaxStart': function() {
     /// <signature>
-    ///   <summary>Register a handler to be called when the first Ajax request begins. This is an Ajax Event.</summary>
+    ///   <summary>Register a handler to be acted when the first Ajax request begins. This is an Ajax Event.</summary>
     ///   <param name="handler()" type="Function">The function to be invoked.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'ajaxStop': function() {
     /// <signature>
-    ///   <summary>Register a handler to be called when all Ajax requests have completed. This is an Ajax Event.</summary>
+    ///   <summary>Register a handler to be acted when all Ajax requests have completed. This is an Ajax Event.</summary>
     ///   <param name="handler()" type="Function">The function to be invoked.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -824,7 +824,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <param name="properties" type="PlainObject">An object of CSS properties and values that the animation will move toward.</param>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1264,7 +1264,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Display the matched elements by fading them to opaque.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1276,7 +1276,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display the matched elements by fading them to opaque.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1284,7 +1284,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Hide the matched elements by fading them to transparent.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1296,7 +1296,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Hide the matched elements by fading them to transparent.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1305,7 +1305,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Adjust the opacity of the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="opacity" type="Number">A number between 0 and 1 denoting the target opacity.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1313,7 +1313,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="opacity" type="Number">A number between 0 and 1 denoting the target opacity.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1322,7 +1322,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display or hide the matched elements by animating their opacity.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1486,7 +1486,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Hide the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1498,7 +1498,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Hide the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1518,7 +1518,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Set the HTML contents of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, oldhtml)" type="Function">A function returning the HTML content to set. Receives the           index position of the element in the set and the old HTML value as arguments.           jQuery empties the element before calling the function;           use the oldhtml argument to reference the previous content.           Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(index, oldhtml)" type="Function">A function returning the HTML content to set. Receives the           index position of the element in the set and the old HTML value as arguments.           jQuery empties the element before acting the function;           use the oldhtml argument to reference the previous content.           Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1726,7 +1726,7 @@ intellisense.annotate(jQuery.fn, {
   'map': function() {
     /// <signature>
     ///   <summary>Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.</summary>
-    ///   <param name="callback(index, domElement)" type="Function">A function object that will be invoked for each element in the current set.</param>
+    ///   <param name="actback(index, domElement)" type="Function">A function object that will be invoked for each element in the current set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1962,8 +1962,8 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Attach an event handler function for one or more events to the selected elements.</summary>
-    ///   <param name="events" type="PlainObject">An object in which the string keys represent one or more space-separated event types and optional namespaces, and the values represent a handler function to be called for the event(s).</param>
-    ///   <param name="selector" type="String">A selector string to filter the descendants of the selected elements that will call the handler. If the selector is null or omitted, the handler is always called when it reaches the selected element.</param>
+    ///   <param name="events" type="PlainObject">An object in which the string keys represent one or more space-separated event types and optional namespaces, and the values represent a handler function to be acted for the event(s).</param>
+    ///   <param name="selector" type="String">A selector string to filter the descendants of the selected elements that will act the handler. If the selector is null or omitted, the handler is always acted when it reaches the selected element.</param>
     ///   <param name="data" type="Anything">Data to be passed to the handler in event.data when an event occurs.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1986,8 +1986,8 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Attach a handler to an event for the elements. The handler is executed at most once per element.</summary>
-    ///   <param name="events" type="PlainObject">An object in which the string keys represent one or more space-separated event types and optional namespaces, and the values represent a handler function to be called for the event(s).</param>
-    ///   <param name="selector" type="String">A selector string to filter the descendants of the selected elements that will call the handler. If the selector is null or omitted, the handler is always called when it reaches the selected element.</param>
+    ///   <param name="events" type="PlainObject">An object in which the string keys represent one or more space-separated event types and optional namespaces, and the values represent a handler function to be acted for the event(s).</param>
+    ///   <param name="selector" type="String">A selector string to filter the descendants of the selected elements that will act the handler. If the selector is null or omitted, the handler is always acted when it reaches the selected element.</param>
     ///   <param name="data" type="Anything">Data to be passed to the handler in event.data when an event occurs.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -2000,7 +2000,7 @@ intellisense.annotate(jQuery.fn, {
   },
   'outerHeight': function() {
     /// <signature>
-    ///   <summary>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.</summary>
+    ///   <summary>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if acted on an empty set of elements.</summary>
     ///   <param name="includeMargin" type="Boolean">A Boolean indicating whether to include the element's margin in the calculation.</param>
     ///   <returns type="Number" />
     /// </signature>
@@ -2146,7 +2146,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Manipulate the queue of functions to be executed, once for each matched element.</summary>
     ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
-    ///   <param name="callback( next )" type="Function">The new function to add to the queue, with a function to call that will dequeue the next item.</param>
+    ///   <param name="actback( next )" type="Function">The new function to add to the queue, with a function to act that will dequeue the next item.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2302,7 +2302,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Display the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2314,7 +2314,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2341,7 +2341,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Display the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2353,7 +2353,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2361,7 +2361,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Display or hide the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2373,7 +2373,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display or hide the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2381,7 +2381,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Hide the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2393,7 +2393,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Hide the matched elements with a sliding motion.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2448,7 +2448,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Display or hide the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2460,7 +2460,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Display or hide the matched elements.</summary>
     ///   <param name="duration" type="">A string or number determining how long the animation will run.</param>
     ///   <param name="easing" type="String">A string indicating which easing function to use for the transition.</param>
-    ///   <param name="complete" type="Function">A function to call once the animation is complete.</param>
+    ///   <param name="complete" type="Function">A function to act once the animation is complete.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2612,7 +2612,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Wrap an HTML structure around each element in the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A callback function returning the HTML content or jQuery object to wrap around the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(index)" type="Function">A actback function returning the HTML content or jQuery object to wrap around the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2631,7 +2631,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Wrap an HTML structure around the content of each element in the set of matched elements.</summary>
-    ///   <param name="function(index)" type="Function">A callback function which generates a structure to wrap around the content of the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
+    ///   <param name="function(index)" type="Function">A actback function which generates a structure to wrap around the content of the matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },

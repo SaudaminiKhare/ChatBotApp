@@ -12,13 +12,13 @@ namespace ChatBot.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "M_0001", "M_0002", "M_0003", "M_0004", "M_0005", "M_0006", "M_0007", "M_0008", "M_0009", "M_0010" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET api/values/M_0001
+        public string Get(string id)
         {
-            return "value";
+            return "M_0001";
         }
 
         // POST api/values
@@ -26,13 +26,13 @@ namespace ChatBot.Controllers
         {
         }
 
-        // PUT api/values/5
+        // PUT api/values/M_0001
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        // DELETE api/values/M_0001
+        public void Delete(string id)
         {
         }
     }

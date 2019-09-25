@@ -16,7 +16,6 @@ C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\bin\Debug\EntityFramework.d
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\bin\Debug\EntityFramework.xml
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\obj\Debug\ChatBotDataAccess.csprojAssemblyReference.cache
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\obj\Debug\ChatBotDataAccess.csproj.CoreCompileInputs.cache
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\obj\Debug\ChatBotDataAccess.csproj.CopyComplete
 C:\Users\320052309\code\ChatBotApp\ChatBotDataAccess\obj\Debug\ChatBotDataAccess.dll

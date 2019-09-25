@@ -14,7 +14,7 @@ namespace ChatBotDataAccess
     
     public partial class Monitor
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotactOverridableMethodsInConstructors")]
         public Monitor()
         {
             this.PatientMonitors = new HashSet<PatientMonitor>();

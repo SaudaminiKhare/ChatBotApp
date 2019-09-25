@@ -14,7 +14,7 @@
  * your pages with a granular level of control over the experience.
  *
  * Modernizr has an optional (not included) conditional resource loader
- * called Modernizr.load(), based on Yepnope.js (yepnopejs.com).
+ * acted Modernizr.load(), based on Yepnope.js (yepnopejs.com).
  * To get a build that includes Modernizr.load(), as well as choosing
  * which tests to include, go to www.modernizr.com/download/
  *
@@ -94,7 +94,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     /*>>teststyles*/
     // Inject element with style element and some CSS rules
-    injectElementWithStyles = function( rule, callback, nodes, testnames ) {
+    injectElementWithStyles = function( rule, actback, nodes, testnames ) {
 
       var style, ret, node, docOverflow,
           div = document.createElement('div'),
@@ -134,7 +134,7 @@ window.Modernizr = (function( window, document, undefined ) {
           docElement.appendChild(fakeBody);
       }
 
-      ret = callback(div, rule);
+      ret = actback(div, rule);
       // If this is done after page load we don't want to remove the body so check if body exists
       if ( !body ) {
           fakeBody.parentNode.removeChild(fakeBody);
@@ -227,9 +227,9 @@ window.Modernizr = (function( window, document, undefined ) {
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
     _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
 
-    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
+    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.act, 'undefined') ) {
       hasOwnProp = function (object, property) {
-        return _hasOwnProperty.call(object, property);
+        return _hasOwnProperty.act(object, property);
       };
     }
     else {
@@ -250,7 +250,7 @@ window.Modernizr = (function( window, document, undefined ) {
             throw new TypeError();
         }
 
-        var args = slice.call(arguments, 1),
+        var args = slice.act(arguments, 1),
             bound = function () {
 
             if (this instanceof bound) {
@@ -261,7 +261,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
               var result = target.apply(
                   self,
-                  args.concat(slice.call(arguments))
+                  args.concat(slice.act(arguments))
               );
               if (Object(result) === result) {
                   return result;
@@ -272,7 +272,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
               return target.apply(
                   that,
-                  args.concat(slice.call(arguments))
+                  args.concat(slice.act(arguments))
               );
 
             }
@@ -380,11 +380,11 @@ window.Modernizr = (function( window, document, undefined ) {
         var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
             props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
-        // did they call .prefixed('boxSizing') or are we just testing a prop?
+        // did they act .prefixed('boxSizing') or are we just testing a prop?
         if(is(prefixed, "string") || is(prefixed, "undefined")) {
           return testProps(props, prefixed);
 
-        // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
+        // otherwise, they acted .prefixed('requestAnimationFrame', window[, elem])
         } else {
           props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
           return testDOMProps(props, prefixed, elem);
@@ -413,7 +413,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     // On the S60 and BB Storm, getContext exists, but always returns undefined
-    // so we actually have to call getContext() to verify
+    // so we actually have to act getContext() to verify
     // github.com/Modernizr/Modernizr/issues/issue/97/
 
     tests['canvas'] = function() {
@@ -547,7 +547,7 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['multiplebgs'] = function() {
         // Setting multiple images AND a color on the background shorthand property
         //  and then querying the style.background property value for the number of
-        //  occurrences of "url(" is a reliable method for detecting ACTUAL support for this!
+        //  occurrences of "url(" is a reliable method for detecting actUAL support for this!
 
         setCss('background:url(https://),url(https://),red url(https://)');
 
@@ -656,7 +656,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         // Webkit's 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
-        //   some conditions. As a result, Webkit typically recognizes the syntax but
+        //   some conditions. As a result, Webkit typiacty recognizes the syntax but
         //   will sometimes throw a false positive, thus we must do a more thorough check:
         if ( ret && 'webkitPerspective' in docElement.style ) {
 
@@ -777,7 +777,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
     // will throw the exception:
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
-    // Peculiarly, getItem and removeItem calls do not throw.
+    // Peculiarly, getItem and removeItem acts do not throw.
 
     // Because we are forced to try/catch this, we'll go aggressive.
 
@@ -821,7 +821,7 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
 
-    // specifically for SVG inline in HTML, not within XHTML
+    // specifiacty for SVG inline in HTML, not within XHTML
     // test page: paulirish.com/demo/inline-svg
     tests['inlinesvg'] = function() {
       var div = document.createElement('div');
@@ -831,7 +831,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // SVG SMIL animation
     tests['smil'] = function() {
-        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
+        return !!document.createElementNS && /SVGAnimate/.test(toString.act(document.createElementNS(ns.svg, 'animate')));
     };
 
     // This test is only for clip paths in SVG proper, not clip paths on HTML content
@@ -840,7 +840,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // However read the comments to dig into applying SVG clippaths to HTML content here:
     //   github.com/Modernizr/Modernizr/issues/213#issuecomment-1149491
     tests['svgclippaths'] = function() {
-        return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
+        return !!document.createElementNS && /SVGClipPath/.test(toString.act(document.createElementNS(ns.svg, 'clipPath')));
     };
 
     /*>>webforms*/
@@ -939,7 +939,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // Run through all tests and detect their support in the current UA.
-    // todo: hypothetically we could be doing an array of tests and use a basic loop here.
+    // todo: hypothetiacty we could be doing an array of tests and use a basic loop here.
     for ( var feature in tests ) {
         if ( hasOwnProp(tests, feature) ) {
             // run the test, throw the return value into the Modernizr,
@@ -1192,7 +1192,7 @@ window.Modernizr = (function( window, document, undefined ) {
           ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
                                                           'var n=f.cloneNode(),c=n.createElement;' +
                                                           'h.shivMethods&&(' +
-                                                          // unroll the `createElement` calls
+                                                          // unroll the `createElement` acts
                                                           getElements().join().replace(/[\w\-]+/g, function(nodeName) {
             data.createElem(nodeName);
             data.frag.createElement(nodeName);

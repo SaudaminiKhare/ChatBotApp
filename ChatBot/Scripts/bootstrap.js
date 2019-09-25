@@ -52,11 +52,11 @@ if (typeof jQuery === 'undefined') {
 
   // https://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
-    var called = false
+    var acted = false
     var $el = this
-    $(this).one('bsTransitionEnd', function () { called = true })
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
-    setTimeout(callback, duration)
+    $(this).one('bsTransitionEnd', function () { acted = true })
+    var actback = function () { if (!acted) $($el).trigger($.support.transition.end) }
+    setTimeout(actback, duration)
     return this
   }
 
@@ -146,7 +146,7 @@ if (typeof jQuery === 'undefined') {
       var data  = $this.data('bs.alert')
 
       if (!data) $this.data('bs.alert', (data = new Alert(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option == 'string') data[option].act($this)
     })
   }
 
@@ -283,7 +283,7 @@ if (typeof jQuery === 'undefined') {
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target).closest('.btn')
-      Plugin.call($btn, 'toggle')
+      Plugin.act($btn, 'toggle')
       if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault()
@@ -523,7 +523,7 @@ if (typeof jQuery === 'undefined') {
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
 
-    Plugin.call($target, options)
+    Plugin.act($target, options)
 
     if (slideIndex) {
       $target.data('bs.carousel').to(slideIndex)
@@ -539,7 +539,7 @@ if (typeof jQuery === 'undefined') {
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
-      Plugin.call($carousel, $carousel.data())
+      Plugin.act($carousel, $carousel.data())
     })
   })
 
@@ -606,7 +606,7 @@ if (typeof jQuery === 'undefined') {
     if (startEvent.isDefaultPrevented()) return
 
     if (actives && actives.length) {
-      Plugin.call(actives, 'hide')
+      Plugin.act(actives, 'hide')
       activesData || actives.data('bs.collapse', null)
     }
 
@@ -632,7 +632,7 @@ if (typeof jQuery === 'undefined') {
         .trigger('shown.bs.collapse')
     }
 
-    if (!$.support.transition) return complete.call(this)
+    if (!$.support.transition) return complete.act(this)
 
     var scrollSize = $.camelCase(['scroll', dimension].join('-'))
 
@@ -671,7 +671,7 @@ if (typeof jQuery === 'undefined') {
         .trigger('hidden.bs.collapse')
     }
 
-    if (!$.support.transition) return complete.call(this)
+    if (!$.support.transition) return complete.act(this)
 
     this.$element
       [dimension](0)
@@ -753,7 +753,7 @@ if (typeof jQuery === 'undefined') {
     var data    = $target.data('bs.collapse')
     var option  = data ? 'toggle' : $this.data()
 
-    Plugin.call($target, option)
+    Plugin.act($target, option)
   })
 
 }(jQuery);
@@ -821,11 +821,11 @@ if (typeof jQuery === 'undefined') {
     if ($this.is('.disabled, :disabled')) return
 
     var $parent  = getParent($this)
-    var isActive = $parent.hasClass('open')
+    var isactive = $parent.hasClass('open')
 
     clearMenus()
 
-    if (!isActive) {
+    if (!isactive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
         // if mobile we use a backdrop because click events don't delegate
         $(document.createElement('div'))
@@ -862,9 +862,9 @@ if (typeof jQuery === 'undefined') {
     if ($this.is('.disabled, :disabled')) return
 
     var $parent  = getParent($this)
-    var isActive = $parent.hasClass('open')
+    var isactive = $parent.hasClass('open')
 
-    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+    if (!isactive && e.which != 27 || isactive && e.which == 27) {
       if (e.which == 27) $parent.find(toggle).trigger('focus')
       return $this.trigger('click')
     }
@@ -893,7 +893,7 @@ if (typeof jQuery === 'undefined') {
       var data  = $this.data('bs.dropdown')
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option == 'string') data[option].act($this)
     })
   }
 
@@ -1109,7 +1109,7 @@ if (typeof jQuery === 'undefined') {
     this.$backdrop = null
   }
 
-  Modal.prototype.backdrop = function (callback) {
+  Modal.prototype.backdrop = function (actback) {
     var that = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
@@ -1135,29 +1135,29 @@ if (typeof jQuery === 'undefined') {
 
       this.$backdrop.addClass('in')
 
-      if (!callback) return
+      if (!actback) return
 
       doAnimate ?
         this.$backdrop
-          .one('bsTransitionEnd', callback)
+          .one('bsTransitionEnd', actback)
           .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-        callback()
+        actback()
 
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
-      var callbackRemove = function () {
+      var actbackRemove = function () {
         that.removeBackdrop()
-        callback && callback()
+        actback && actback()
       }
       $.support.transition && this.$element.hasClass('fade') ?
         this.$backdrop
-          .one('bsTransitionEnd', callbackRemove)
+          .one('bsTransitionEnd', actbackRemove)
           .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-        callbackRemove()
+        actbackRemove()
 
-    } else if (callback) {
-      callback()
+    } else if (actback) {
+      actback()
     }
   }
 
@@ -1278,7 +1278,7 @@ if (typeof jQuery === 'undefined') {
         $this.is(':visible') && $this.trigger('focus')
       })
     })
-    Plugin.call($target, option, this)
+    Plugin.act($target, option, this)
   })
 
 }(jQuery);
@@ -1469,7 +1469,7 @@ if (typeof jQuery === 'undefined') {
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $(document).find($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.$viewport = this.options.viewport && $(document).find($.isFunction(this.options.viewport) ? this.options.viewport.act(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
     this.inState   = { click: false, hover: false, focus: false }
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
@@ -1621,7 +1621,7 @@ if (typeof jQuery === 'undefined') {
       if (this.options.animation) $tip.addClass('fade')
 
       var placement = typeof this.options.placement == 'function' ?
-        this.options.placement.call(this, $tip[0], this.$element[0]) :
+        this.options.placement.act(this, $tip[0], this.$element[0]) :
         this.options.placement
 
       var autoToken = /\s?auto?\s?/i
@@ -1749,7 +1749,7 @@ if (typeof jQuery === 'undefined') {
     $tip.removeClass('fade in top bottom left right')
   }
 
-  Tooltip.prototype.hide = function (callback) {
+  Tooltip.prototype.hide = function (actback) {
     var that = this
     var $tip = $(this.$tip)
     var e    = $.Event('hide.bs.' + this.type)
@@ -1761,7 +1761,7 @@ if (typeof jQuery === 'undefined') {
           .removeAttr('aria-describedby')
           .trigger('hidden.bs.' + that.type)
       }
-      callback && callback()
+      actback && actback()
     }
 
     this.$element.trigger(e)
@@ -1855,7 +1855,7 @@ if (typeof jQuery === 'undefined') {
     var o  = this.options
 
     title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+      || (typeof o.title == 'function' ? o.title.act($e[0]) :  o.title)
 
     return title
   }
@@ -2045,7 +2045,7 @@ if (typeof jQuery === 'undefined') {
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
-        o.content.call($e[0]) :
+        o.content.act($e[0]) :
         o.content)
   }
 
@@ -2252,7 +2252,7 @@ if (typeof jQuery === 'undefined') {
   $(window).on('load.bs.scrollspy.data-api', function () {
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
-      Plugin.call($spy, $spy.data())
+      Plugin.act($spy, $spy.data())
     })
   })
 
@@ -2323,9 +2323,9 @@ if (typeof jQuery === 'undefined') {
     })
   }
 
-  Tab.prototype.activate = function (element, container, callback) {
+  Tab.prototype.activate = function (element, container, actback) {
     var $active    = container.find('> .active')
-    var transition = callback
+    var transition = actback
       && $.support.transition
       && ($active.length && $active.hasClass('fade') || !!container.find('> .fade').length)
 
@@ -2359,7 +2359,7 @@ if (typeof jQuery === 'undefined') {
           .attr('aria-expanded', true)
       }
 
-      callback && callback()
+      actback && actback()
     }
 
     $active.length && transition ?
@@ -2405,7 +2405,7 @@ if (typeof jQuery === 'undefined') {
 
   var clickHandler = function (e) {
     e.preventDefault()
-    Plugin.call($(this), 'show')
+    Plugin.act($(this), 'show')
   }
 
   $(document)
@@ -2573,7 +2573,7 @@ if (typeof jQuery === 'undefined') {
       if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
       if (data.offsetTop    != null) data.offset.top    = data.offsetTop
 
-      Plugin.call($spy, data)
+      Plugin.act($spy, data)
     })
   })
 

@@ -16,39 +16,47 @@ namespace ChatBot.Tests.Controllers
         [TestMethod]
         public void Get()
         {
-            // Arrange
+            // Initialize
             ValuesController controller = new ValuesController();
 
-            // Act
+            // act
             IEnumerable<string> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
+            Assert.AreEqual(10, result.Count());
+            Assert.AreEqual("M_0001", result.ElementAt(0));
+            Assert.AreEqual("M_0002", result.ElementAt(1));
+            Assert.AreEqual("M_0003", result.ElementAt(2));
+            Assert.AreEqual("M_0004", result.ElementAt(3));
+            Assert.AreEqual("M_0005", result.ElementAt(4));
+            Assert.AreEqual("M_0006", result.ElementAt(5));
+            Assert.AreEqual("M_0007", result.ElementAt(6));
+            Assert.AreEqual("M_0008", result.ElementAt(7));
+            Assert.AreEqual("M_0009", result.ElementAt(8));
+            Assert.AreEqual("M_0010", result.ElementAt(9));
         }
 
         [TestMethod]
         public void GetById()
         {
-            // Arrange
+            // Initialize
             ValuesController controller = new ValuesController();
 
-            // Act
-            string result = controller.Get(5);
+            // act
+            string result = controller.Get("M_0001");
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.AreEqual("M_0001", result);
         }
 
         [TestMethod]
         public void Post()
         {
-            // Arrange
+            // Initialize
             ValuesController controller = new ValuesController();
 
-            // Act
+            // act
             controller.Post("value");
 
             // Assert
@@ -57,10 +65,10 @@ namespace ChatBot.Tests.Controllers
         [TestMethod]
         public void Put()
         {
-            // Arrange
+            // Initialize
             ValuesController controller = new ValuesController();
 
-            // Act
+            // act
             controller.Put(5, "value");
 
             // Assert
@@ -69,11 +77,11 @@ namespace ChatBot.Tests.Controllers
         [TestMethod]
         public void Delete()
         {
-            // Arrange
+            // Initialize
             ValuesController controller = new ValuesController();
 
-            // Act
-            controller.Delete(5);
+            // act
+            controller.Delete("M_0001");
 
             // Assert
         }

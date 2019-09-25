@@ -14,9 +14,9 @@ namespace SelectMonitorLib
 
         public int FindScore(string FeatureList, List<string> DesiredFeatures)
         {
-            ChatBotDBEntities entities = new ChatBotDBEntities();
-            int no_features = entities.Features.Count();
-            int no_monitors = entities.Monitors.Count(); ;
+            //ChatBotDBEntities entities = new ChatBotDBEntities();
+            //int no_features = entities.Features.Count();
+            //int no_monitors = entities.Monitors.Count(); 
             int _score = 0;
 
             string[] Features = FeatureList.Split(',');
@@ -32,18 +32,18 @@ namespace SelectMonitorLib
         //string[] Responses;
         public List<string> FindRequiredProduct(string[] responses)
         {
-            ChatBotDBEntities entities = new ChatBotDBEntities();
-            List<PatientMonitor> entity = null;
+            //ChatBotDBEntities entities = new ChatBotDBEntities();
+            //sList<PatientMonitor> entity = null;
             List<string> Responses = new List<string>();
             List<String> BestMatch = new List<String>();
             List<int> scoreList = new List<int>();
             List<String> DesiredFeatureList = new List<string>();
-            int no_features = entities.Features.Count();
-            int no_monitors = entities.Monitors.Count();
+            //int no_features = entities.Features.Count();
+            //int no_monitors = entities.Monitors.Count();
             List<string> FeatureList1 = new List<string>();
-            int _score = 0;
+            //int _score = 0;
 
-            SqlConnection conn = new SqlConnection(@"Data Source=INGBTCPIC5NBYY5\SQLEXPRESS;Initial Catalog=ChatBotDB;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection conn = new SqlConnection(@"Data Source=INGBTCPIC5NBYY5\SQLEXPRESS;Initial Catalog=ChatBotDB;Integrated Security=True;MultipleactiveResultSets=True;Application Name=EntityFramework");
             conn.Open();
             if (responses.Length >= 3)
             {
@@ -79,7 +79,7 @@ namespace SelectMonitorLib
 
                 }
 
-                List<Boolean> AvailableFeatures = new List<Boolean>();
+                //List<Boolean> AvailableFeatures = new List<Boolean>();
                 //List<Dictionary<string, string>> rows = new List<Dictionary<string, string>>();
 
                 #region Calculate score

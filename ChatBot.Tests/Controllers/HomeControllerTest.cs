@@ -11,10 +11,10 @@ namespace ChatBot.Tests.Controllers
         [TestMethod]
         public void Index()
         {
-            // Arrange
+            // Initialize
             HomeController controller = new HomeController();
 
-            // Act
+            // act
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert

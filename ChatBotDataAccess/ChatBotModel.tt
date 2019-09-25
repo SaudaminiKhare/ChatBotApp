@@ -34,7 +34,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     if (propertiesWithDefaultValues.Any() || collectionNavigationProperties.Any() || complexProperties.Any())
     {
 #>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotactOverridableMethodsInConstructors")]
     public <#=code.Escape(entity)#>()
     {
 <#
@@ -332,7 +332,7 @@ public class CodeStringGenerator
             _code.Escape(_typeMapper.UnderlyingClrType(enumType)));
         }
     
-    public void WriteFunctionParameters(EdmFunction edmFunction, Action<string, string, string, string> writeParameter)
+    public void WriteFunctionParameters(EdmFunction edmFunction, action<string, string, string, string> writeParameter)
     {
         var parameters = FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
         foreach (var parameter in parameters.Where(p => p.NeedsLocalVariable))
@@ -396,10 +396,10 @@ public class CodeStringGenerator
         var parameters = _typeMapper.GetParameters(edmFunction);
         var returnType = _typeMapper.GetReturnType(edmFunction);
 
-        var callParams = _code.StringBefore(", ", String.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray()));
+        var actParams = _code.StringBefore(", ", String.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray()));
         if (includeMergeOption)
         {
-            callParams = ", mergeOption" + callParams;
+            actParams = ", mergeOption" + actParams;
         }
         
         return string.Format(
@@ -407,7 +407,7 @@ public class CodeStringGenerator
             "return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction{0}(\"{1}\"{2});",
             returnType == null ? "" : "<" + _typeMapper.GetTypeName(returnType, modelNamespace) + ">",
             edmFunction.Name,
-            callParams);
+            actParams);
     }
     
     public string DbSet(EntitySet entitySet)

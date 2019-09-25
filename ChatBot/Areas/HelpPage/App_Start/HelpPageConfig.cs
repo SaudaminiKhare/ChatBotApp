@@ -45,7 +45,7 @@ namespace ChatBot.Areas.HelpPage
             //    {typeof(IEnumerable<string>), new string[]{"sample 1", "sample 2"}}
             //});
 
-            // Extend the following to provide factories for types not handled automatically (those lacking parameterless
+            // Extend the following to provide factories for types not handled automatiacty (those lacking parameterless
             // constructors) or for which you prefer to use non-default property values. Line below provides a fallback
             // since automatic handling will fail and GeneratePageResult handles only a single type.
 #if Handle_PageResultOfT
@@ -73,11 +73,11 @@ namespace ChatBot.Areas.HelpPage
 
             //// Uncomment the following to correct the sample request when the action expects an HttpRequestMessage with ObjectContent<string>.
             //// The sample will be generated as if the controller named "Values" and action named "Get" were having string as the body parameter.
-            //config.SetActualRequestType(typeof(string), "Values", "Get");
+            //config.SetactualRequestType(typeof(string), "Values", "Get");
 
             //// Uncomment the following to correct the sample response when the action returns an HttpResponseMessage with ObjectContent<string>.
             //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
-            //config.SetActualResponseType(typeof(string), "Values", "Post");
+            //config.SetactualResponseType(typeof(string), "Values", "Post");
         }
 
 #if Handle_PageResultOfT
@@ -100,7 +100,7 @@ namespace ChatBot.Areas.HelpPage
                     Type[] parameterTypes = new Type[] { itemsType, typeof(Uri), typeof(long?), };
                     object[] parameters = new object[] { items, null, (long)ObjectGenerator.DefaultCollectionSize, };
 
-                    // Call PageResult(IEnumerable<T> items, Uri nextPageLink, long? count) constructor
+                    // act PageResult(IEnumerable<T> items, Uri nextPageLink, long? count) constructor
                     ConstructorInfo constructor = type.GetConstructor(parameterTypes);
                     return constructor.Invoke(parameters);
                 }

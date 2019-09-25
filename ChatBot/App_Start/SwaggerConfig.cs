@@ -40,7 +40,7 @@ namespace ChatBot
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
-                        // included in the docs for a given API version. Like "SingleApiVersion", each call to "Version"
+                        // included in the docs for a given API version. Like "SingleApiVersion", each act to "Version"
                         // returns an "Info" builder so you can provide additional metadata per API version.
                         //
                         //c.MultipleApiVersions(
@@ -79,22 +79,22 @@ namespace ChatBot
                         //    });
 
                         // Set this flag to omit descriptions for any actions decorated with the Obsolete attribute
-                        //c.IgnoreObsoleteActions();
+                        //c.IgnoreObsoleteactions();
 
                         // Each operation be assigned one or more tags which are then used by consumers for various reasons.
                         // For example, the swagger-ui groups operations according to the first tag of each operation.
-                        // By default, this will be controller name but you can use the "GroupActionsBy" option to
+                        // By default, this will be controller name but you can use the "GroupactionsBy" option to
                         // override with any value.
                         //
-                        //c.GroupActionsBy(apiDesc => apiDesc.HttpMethod.ToString());
+                        //c.GroupactionsBy(apiDesc => apiDesc.HttpMethod.ToString());
 
-                        // You can also specify a custom sort order for groups (as defined by "GroupActionsBy") to dictate
+                        // You can also specify a custom sort order for groups (as defined by "GroupactionsBy") to dictate
                         // the order in which operations are listed. For example, if the default grouping is in place
                         // (controller name) and you specify a descending alphabetic sort order, then actions from a
-                        // ProductsController will be listed before those from a CustomersController. This is typically
+                        // ProductsController will be listed before those from a CustomersController. This is typiacty
                         // used to customize the order of groupings in the swagger-ui.
                         //
-                        //c.OrderActionGroupsBy(new DescendingAlphabeticComparer());
+                        //c.OrderactionGroupsBy(new DescendingAlphabeticComparer());
 
                         // If you annotate Controllers and API Types with
                         // Xml comments (http://msdn.microsoft.com/en-us/library/b2s063f7(v=vs.110).aspx), you can incorporate
@@ -121,7 +121,7 @@ namespace ChatBot
                         //
                         //c.SchemaFilter<ApplySchemaVendorExtensions>();
 
-                        // In a Swagger 2.0 document, complex types are typically declared globally and referenced by unique
+                        // In a Swagger 2.0 document, complex types are typiacty declared globally and referenced by unique
                         // Schema Id. By default, Swashbuckle does NOT use the full type name in Schema Ids. In most cases, this
                         // works well because it prevents the "implementation detail" of type namespaces from leaking into your
                         // Swagger docs and UI. However, if you have multiple types in your API with the same class name, you'll
@@ -170,7 +170,7 @@ namespace ChatBot
                         // with the same path (sans query string) and HTTP method. You can workaround this by providing a
                         // custom strategy to pick a winner or merge the descriptions for the purposes of the Swagger docs
                         //
-                        //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                        //c.ResolveConflictingactions(apiDescriptions => apiDescriptions.First());
 
                         // Wrap the default SwaggerGenerator with additional behavior (e.g. caching) or provide an
                         // alternative implementation for ISwaggerProvider with the CustomProvider option.
@@ -220,7 +220,7 @@ namespace ChatBot
                         //c.SupportedSubmitMethods("GET", "HEAD");
 
                         // Use the CustomAsset option to provide your own version of assets used in the swagger-ui.
-                        // It's typically used to instruct Swashbuckle to return your version instead of the default
+                        // It's typiacty used to instruct Swashbuckle to return your version instead of the default
                         // when a request is made for "index.html". As with all custom content, the file must be included
                         // in your project as an "Embedded Resource", and then the resource's "Logical Name" is passed to
                         // the method as shown below.
